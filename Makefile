@@ -5,7 +5,6 @@ CFLAGS          = -Wall -Wextra -Werror -g
 MLX42_LIB       = ./Include/MLX42/build/libmlx42.a
 MLX42_INCLUDE   = ./Include/MLX42/include
 LIBFT           = ./Include/libft
-FT_PRINTF       = ./Include/ft_printf
 GNL             = ./Include/get_next_line
 INCLUDES        = -I$(MLX42_INCLUDE) -IInclude -I$(LIBFT) -I$(FT_PRINTF) -I$(GNL)
 LIBS            = -L./Include/MLX42/build -lmlx42 -lglfw -ldl -lm -lpthread -L$(LIBFT) -lft -L$(FT_PRINTF) -lftprintf -g
@@ -17,6 +16,7 @@ SRC_FILES       = main.c \
 				  initialisation/player.c \
 				  initialisation/screen.c \
 				  initialisation/game.c \
+				  initialisation/textures.c \
 
 
 
@@ -43,7 +43,7 @@ $(OBJ_DIRS):
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIRS) $(MLX42_LIB)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-$(NAME): $(OBJS) $(LIBFT)/libft.a $(FT_PRINTF)/libftprintf.a $(GNL)/libgnl.a $(MLX42_LIB)
+$(NAME): $(OBJS) $(LIBFT)/libft.a $(GNL)/libgnl.a $(MLX42_LIB)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS)
 	@clear
 	@echo "$(PINK)" 
@@ -60,17 +60,12 @@ $(NAME): $(OBJS) $(LIBFT)/libft.a $(FT_PRINTF)/libftprintf.a $(GNL)/libgnl.a $(M
 $(LIBFT)/libft.a:
 	@$(MAKE) -C $(LIBFT)
 
-# Build ft_printf
-$(FT_PRINTF)/libftprintf.a:
-	@$(MAKE) -C $(FT_PRINTF)
-
 # Build GNL
 $(GNL)/libgnl.a:
 	@$(MAKE) -C $(GNL)
 
 clean:
 	@$(MAKE) -C $(LIBFT) clean
-	@$(MAKE) -C $(FT_PRINTF) clean
 	@$(MAKE) -C $(GNL) clean
 	@rm -rf $(OBJ_DIR)
 	@echo "$(PINK)$(NAME) BYE$(RESET)"

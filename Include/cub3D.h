@@ -4,7 +4,6 @@
 #include "struct.h"
 # include "MLX42/include/MLX42/MLX42.h"
 # include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
 # include "math.h"
 
 //initialisation

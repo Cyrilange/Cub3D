@@ -14,10 +14,16 @@
 
 typedef struct s_texture
 {
-    mlx_texture_t *NO;
-    mlx_texture_t *SO;
-    mlx_texture_t *EA;
-    mlx_texture_t *WE;
+    mlx_texture_t 	*no;
+	char			*no_path;
+    mlx_texture_t 	*so;
+	char			*so_path;
+    mlx_texture_t 	*ea;
+	char			*ea_path;
+    mlx_texture_t 	*we;
+	char			*we_path;
+	unsigned int	ceilling;
+	unsigned int	floor;
 
 }       t_texture;
 
@@ -34,11 +40,13 @@ typedef struct s_player
 
 }       t_player;
 
+
 typedef struct s_game
 {
-	void		*mlx;
+	mlx_t		*mlx;
 	void		*win;
 	t_player	player;
+	t_texture	*texture;
 	char		**map;
 	int			map_width;
 	int			map_height;
