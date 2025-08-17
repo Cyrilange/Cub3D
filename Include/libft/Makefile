@@ -31,18 +31,18 @@ AR = ar rcs
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	$(AR) $(NAME) $(OBJECTS)
+	@$(AR) $(NAME) $(OBJECTS)
 
 $(OBJECTS): $(FUNCTIONS)
-	$(CC) $(FLAGS) $(FUNCTIONS)
+	@$(CC) $(FLAGS) $(FUNCTIONS)
 	
 
 clean:
-	rm -f $(OBJECTS) $(OBJECTS_BONUS)
+	@rm -f $(OBJECTS) $(OBJECTS_BONUS)
 	
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 	
 
 re: fclean all
