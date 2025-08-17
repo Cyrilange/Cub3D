@@ -1,7 +1,7 @@
 NAME            = cub3D
 
-CC              = gcc -g
-CFLAGS          = -Wall -Wextra -Werror
+CC              = cc
+CFLAGS          = -Wall -Wextra -Werror -g
 MLX42_LIB       = ./Include/MLX42/build/libmlx42.a
 MLX42_INCLUDE   = ./Include/MLX42/include
 LIBFT           = ./Include/libft
@@ -13,7 +13,13 @@ LIBS            = -L./Include/MLX42/build -lmlx42 -lglfw -ldl -lm -lpthread -L$(
 SRC_DIR         = ./Src
 OBJ_DIR         = ./obj
 
-SRC_FILES       = main.c
+SRC_FILES       = main.c \
+				  initialisation/player.c \
+				  initialisation/screen.c \
+				  initialisation/game.c \
+
+
+
 OBJS            = $(SRC_FILES:%.c=$(OBJ_DIR)/%.o)
 
 PINK            = \033[1;35m
@@ -21,46 +27,34 @@ RESET           = \033[0m
 
 all: $(NAME)
 
-# Build MLX42
+
 $(MLX42_LIB):
 	cmake -B Include/MLX42/build -S ./Include/MLX42
 	cmake --build Include/MLX42/build -j4
 
-# Compilation des fichiers objets
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(MLX42_LIB)
-	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+OBJ_DIRS := $(sort $(dir $(OBJS)))
+
+
+$(OBJ_DIRS):
+	mkdir -p $@
+
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIRS) $(MLX42_LIB)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT)/libft.a $(FT_PRINTF)/libftprintf.a $(GNL)/libgnl.a $(MLX42_LIB)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS)
 	@clear
-	@echo "\n\n\n"
-	@echo "$(PINK)"
-	@echo "                 ,----..                                    ,---,.          /   /     '.              ,---,     "
-	@echo "                /   /   \\\\                  ,--,           ,'  .'  \\\\        / ../        ;           .'  .' \\\\   "
-	@echo "               |   :     :               ,'_ /|         ,---.' .' |        \\\\ ''\\\\  .'-    '        ,---.'     \\\\  "
-	@echo "               .   |  ;. /          .--. |  | :         |   |  |: |         \\\\___\\\\/   \\\\   :        |   |  .\\\\\\\\  | "
-	@echo "               .   ; /--\`         ,'_ /| :  . |         :   :  :  /              \\\\   :   |        :   : |  '  | "
-	@echo "               ;   | ;            |  ' | |  . .         :   |    ;               /  /   /         |   ' '  ;  : "
-	@echo "               |   : |            |  | ' |  | |         |   :     \\\\              \\\\  \\\\   \\\\         '   | ;  .  | "
-	@echo "               .   | '___         :  | | :  ' ;         |   |   . |          ___ /   :   |        |   | :  |  ' "
-	@echo "               '   ; : .'|        |  ; ' |  | '         '   :  '; |         /   /\\\\   /   :        '   : | /  ;  "
-	@echo "               '   | '/  :        :  | : ;  ; |         |   |  | ;         / ,,/  ',-    .        |   | '\` ,/   "
-	@echo "               |   :    /         '  :  \`--'   \\\\        |   :   /          \\\\ ''\\\\        ;         ;   :  .'     "
-	@echo "                \\\\   \\\\ .'          :  ,      .-./        |   | ,'            \\\\   \\\\     .'          |   ,.'       "
-	@echo "                 \`---\`             \`--\`----'            \`----'               \`--\`-,,-'            '---'         "
-	@echo "\n"
+	@echo "$(PINK)" 
+	@echo " ██████   ██    ██   ████████    ██████    ██████  "
+	@echo " ██       ██    ██   ██  ████        ██    ██   ██ "
+	@echo " ██       ██    ██   ██  ██       █████    ██   ██ "
+	@echo " ██       ██    ██   ██  ████        ██    ██   ██ "
+	@echo " ██████    ██████    ████████    ██████    ██████  "
 	@echo "$(RESET)"
-	@echo "\033[1;34m                                     <usage> <./cub3D> <includes/maps/map.yourchoice> \033[0m"
-	@echo "\n\n\n"
-
-
-
-
-
-
-
-
+	@echo "\033[1;34m usage: ./cub3D includes/maps/map.yourchoice \033[0m"
+	@echo ""
 
 # Build Libft
 $(LIBFT)/libft.a:
