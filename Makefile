@@ -17,7 +17,9 @@ SRC_FILES       = main.c \
 				  initialisation/screen.c \
 				  initialisation/game.c \
 				  initialisation/textures.c \
-				  tool/tool_part1.c
+				  tool/tool_part1.c \
+				  parsing/color.c \
+				  parsing/line.c \
 
 
 
@@ -45,7 +47,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIRS) $(MLX42_LIB)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT)/libft.a $(GNL)/libgnl.a $(MLX42_LIB)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(GNL)/libgnl.a $(LIBS)
 	@clear
 	@echo "$(PINK)" 
 	@echo " ██████   ██    ██   ████████    ██████    ██████  "

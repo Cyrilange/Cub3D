@@ -3,8 +3,8 @@ SO /home/csalamithome/Desktop/Cub3D/Include/assets/walls/grey_wall.png
 WE /home/csalamithome/Desktop/Cub3D/Include/assets/walls/simple_black_wall.png
 EA /home/csalamithome/Desktop/Cub3D/Include/assets/walls/white_wall.png
 
-F 230,66,60
-C 170,10,220
+F 255,0,0
+C 0,0,255
 
 111111111111111ma
 100000001000001

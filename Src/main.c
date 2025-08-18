@@ -1,6 +1,39 @@
 #include "cub3D.h"
 
+int main(int argc, char **argv)
+{
+    t_game game;
+    int x, y;
 
+    if (argc != 2)
+    {
+        ft_putstr_fd("Usage: ./cub3D <map.cub>\n", 2);
+        return (1);
+    }
+    init_game_struct(&game);
+    parse_map_file(argv[1], &game);
+    init_window(&game);
+    game.img.img = mlx_new_image(game.mlx, WIN_WIDTH, WIN_HEIGHT);
+    game.img.img_width = WIN_WIDTH;
+    game.img.img_height = WIN_HEIGHT;
+
+    for (y = 0; y < WIN_HEIGHT / 2; y++)
+        for (x = 0; x < WIN_WIDTH; x++)
+            mlx_put_pixel(game.img.img, x, y, game.texture.ceilling);
+
+    for (y = WIN_HEIGHT / 2; y < WIN_HEIGHT; y++)
+        for (x = 0; x < WIN_WIDTH; x++)
+            mlx_put_pixel(game.img.img, x, y, game.texture.floor);
+
+    mlx_image_to_window(game.mlx, game.img.img, 0, 0);
+    mlx_loop(game.mlx);
+    mlx_terminate(game.mlx);
+
+    return (0);
+}
+
+
+/*
 int main(int argc, char **argv)
 {
     t_game game;
@@ -29,3 +62,4 @@ int main(int argc, char **argv)
     mlx_terminate(game.mlx);
     return 0;
 }
+*/

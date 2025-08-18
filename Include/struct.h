@@ -14,6 +14,12 @@
 # include <fcntl.h>
 # include <MLX42/MLX42.h>
 
+typedef struct s_img
+{
+	mlx_image_t	*img;
+	int			img_width;
+	int			img_height;
+}	t_img;
 
 typedef struct s_texture
 {
@@ -59,6 +65,7 @@ typedef struct s_game
 	t_player	player;
 	t_texture	texture;
 	t_map		map;
+	t_img		img; //image buffer
 
 } t_game;
 

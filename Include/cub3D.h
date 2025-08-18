@@ -24,5 +24,6 @@ void	*check_malloc(size_t size);
 void	error_function(const char *message);
 //parsing
 void    parse_map_file(const char *filename, t_game *game);
+unsigned int    parse_color(char *s);
 
 # endif

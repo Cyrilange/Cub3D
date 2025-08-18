@@ -1,6 +1,5 @@
 #include "cub3D.h"
-
-#include "cub3D.h"
+#include "get_next_line/get_next_line_bonus.h"
 
 /* Add a line to the map */
 static void add_line_to_map(t_map *map, char *line)
