@@ -1,8 +1,16 @@
 #include "cub3D.h"
 
+#include "cub3D.h"
 
-int main()
+int	main(int argc, char **argv)
 {
-    write(1, "hello", 6);
-    return 0;
+    t_game	*game;
+
+    init_game(&game);
+    init_textures(&game->texture);
+    check_game();
+    init_player();
+    start_game();
+    free_game();
+    return (0);
 }

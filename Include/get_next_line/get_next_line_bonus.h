@@ -30,7 +30,7 @@
 
 char		*get_next_line(int fd);
 char		*ft_fill_line(char *buffer, int fd);
-void		*ft_calloc(size_t count, size_t size);
+void		*ft_gnl_calloc(size_t count, size_t size);
 char		*ft_read_line(char *line_buffer);
 int			ft_strlen_get(const char	*str);
 char		*ft_strjoin(char *s1, char *s2);

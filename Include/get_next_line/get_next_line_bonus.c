@@ -29,7 +29,7 @@ char	*ft_read_line(char *buffer)
 		return (NULL);
 	while (buffer[i] != '\n' && buffer[i] != '\0')
 		i++;
-	left = (char *)ft_calloc(i + 1 + (buffer[i] == '\n'), 1);
+	left = (char *)ft_gnl_calloc(i + 1 + (buffer[i] == '\n'), 1);
 	if (!left)
 		return (NULL);
 	i = 0;
@@ -50,11 +50,11 @@ char	*ft_fill_line(char *buffer, int fd)
 
 	if (!buffer)
 	{
-		buffer = ft_calloc(1, 1);
+		buffer = ft_gnl_calloc(1, 1);
 		if (!buffer)
 			return (NULL);
 	}
-	temp = ft_calloc(BUFFER_SIZE + 1, 1);
+	temp = ft_gnl_calloc(BUFFER_SIZE + 1, 1);
 	if (!temp)
 		return (ft_free(buffer));
 	reed = 1;
@@ -83,7 +83,7 @@ char	*ft_update(char *buffer)
 		i++;
 	if (!buffer[i])
 		return (ft_free(buffer));
-	upt = ft_calloc((ft_strlen_get(buffer) - i + 1), sizeof(char));
+	upt = ft_gnl_calloc((ft_strlen_get(buffer) - i + 1), sizeof(char));
 	if (!upt)
 		return (ft_free(buffer));
 	i++;
@@ -108,22 +108,4 @@ char	*get_next_line(int fd)
 	buffer[fd] = ft_update(buffer[fd]);
 	return (line);
 }
-/*
-#include <stdio.h>
 
-
-int main()
-{
-	char *line;
-	int fd;
-	fd = open("prueba.txt", O_RDONLY);
-
-	//esto imprime todas las lineas
-	while((line = get_next_line(fd)) != NULL)
-	{
-		printf("%s", line);
-		free(line);
-	} 
-	return(0);
-}
-*/

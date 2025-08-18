@@ -12,6 +12,7 @@
 # include <memory.h>
 # include <MLX42/MLX42.h>
 
+
 typedef struct s_texture
 {
     mlx_texture_t 	*no;
@@ -40,16 +41,22 @@ typedef struct s_player
 
 }       t_player;
 
+typedef struct s_map
+{
+	char	**map;
+	int		map_width;
+	int		map_height;
+} t_map;
+
 
 typedef struct s_game
 {
 	mlx_t		*mlx;
 	void		*win;
 	t_player	player;
-	t_texture	*texture;
-	char		**map;
-	int			map_width;
-	int			map_height;
+	t_texture	texture;
+	t_map		map;
+
 } t_game;
 
 

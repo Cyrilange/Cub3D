@@ -70,7 +70,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_gnl_calloc(size_t count, size_t size)
 {
 	char		*result;
 	size_t		i;
