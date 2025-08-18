@@ -1,68 +1,31 @@
 #include "cub3D.h"
 
-#include "cub3D.h"
 
-#include "cub3D.h"
-/*
-int main(void)
+int main(int argc, char **argv)
 {
     t_game game;
 
-    // initialisation
+    // Initialisation
     init_game_struct(&game);
-    init_map(&game.map);
-    init_textures(&game.texture);
-    // window mlx
-    game.mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "cub3D", false);
-    if (!game.mlx)
+
+    // Parsing
+    if (argc != 2)
     {
-        error_message("Error: Failed to initialize window\n");
+        printf("Usage: %s <map.cub>\n", argv[0]);
         return 1;
     }
-    // path wall
-    game.texture.no_path = "textures/nord.png";
-    game.texture.so_path = "textures/sud.png";
-    game.texture.ea_path = "textures/est.png";
-    game.texture.we_path = "textures/ouest.png";
-    // show images
-    init_images(&game);
-    // while mlx
-    mlx_loop(game.mlx);
-    // free all 
-    mlx_terminate(game.mlx);
-    return 0;
-}
-*/
+    parse_map_file(argv[1], &game);
+    find_player(&game, &game.player.pos_x, &game.player.pos_y, &game.player.start_dir); //& because we give the address
+    init_game(&game);
+    // Création win
+    init_window(&game);
+    // Initialisation player, no the address so no &
+    init_player(&game.player, game.player.pos_x, game.player.pos_y, game.player.start_dir);
 
-
-//test main
-#include "cub3D.h"
-
-int main(void)
-{
-    t_game game;
-
-    init_game_struct(&game);
-    init_map(&game.map);
-    init_textures(&game.texture);
-
-
-    game.mlx = mlx_init(400, 100, "Test Images", false);
-    if (!game.mlx)
-        return (write(2, "Erreur MLX\n", 12), 1);
-
-  
-    game.texture.no_path = "textures/nord.png";
-    game.texture.so_path = "textures/sud.png";
-    game.texture.ea_path = "textures/est.png";
-    game.texture.we_path = "textures/ouest.png";
-
- 
-    init_images(&game);
-
+    // principale while
     mlx_loop(game.mlx);
 
-   
+    // cleaning
     mlx_terminate(game.mlx);
     return 0;
 }

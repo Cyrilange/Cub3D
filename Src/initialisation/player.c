@@ -47,3 +47,31 @@ void	init_player(t_player *player, double start_x, double start_y, char start)
 	else if (start == 'W')
 		init_west(player);
 }
+
+
+void	find_player(t_game *game, double *start_x, double *start_y, char *start_dir)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+    while (y < game->map.map_height)
+    {
+		x = 0;
+        while (x < game->map.map_width)
+        {
+            char c = game->map.map[y][x];
+            if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+            {
+                *start_x = x + 0.5;
+                *start_y = y + 0.5;
+                *start_dir = c;
+                game->map.map[y][x] = '0';
+                return;
+            }
+			x++;
+        }
+		y++;
+    }
+    error_function("Error: no player start found in map");
+}

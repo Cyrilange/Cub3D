@@ -39,6 +39,7 @@ typedef struct s_player
 	double	plan_y;
 	double	move_speed;
 	double	rot_speed;
+	char	start_dir;
 
 }       t_player;
 
