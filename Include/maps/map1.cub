@@ -1,7 +1,7 @@
-NO ./path/to/north_texture
-SO ./path/to/south_texture
-WE ./path/to/west_texture
-EA ./path/to/east_texture
+NO /home/csalamithome/Desktop/Cub3D/Include/assets/walls/black_wall.png
+SO /home/csalamithome/Desktop/Cub3D/Include/assets/walls/grey_wall.png
+WE /home/csalamithome/Desktop/Cub3D/Include/assets/walls/simple_black_wall.png
+EA /home/csalamithome/Desktop/Cub3D/Include/assets/walls/white_wall.png
 
 F 220,100,0
 C 100,10,220

@@ -1,5 +1,6 @@
+
+#ifndef CUB3D_H
 #define CUB3D_H
-# ifdef CUB3D_H
 //struc from struct.h
 # include "struct.h"
 //define for all the define parts
@@ -13,6 +14,8 @@
 //initialisation
 void	init_player(t_player *player, double start_x, double start_y, char start);
 void	init_game(t_game *game);
+void    init_game_struct(t_game *game);
+void	init_map(t_map *map);
 void	init_textures(t_texture *textures);
 void	init_images(t_game *game);
 void	init_window(t_game *game);

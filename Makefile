@@ -17,6 +17,7 @@ SRC_FILES       = main.c \
 				  initialisation/screen.c \
 				  initialisation/game.c \
 				  initialisation/textures.c \
+				  tool/tool_part1.c
 
 
 

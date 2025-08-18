@@ -1,5 +1,6 @@
+
+#ifndef DEFINE_H
 #define DEFINE_H
-# ifdef DEFINE_H
 
 
 
