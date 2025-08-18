@@ -22,5 +22,7 @@ void	init_window(t_game *game);
 //tools
 void	*check_malloc(size_t size);
 void	error_function(const char *message);
+//parsing
+void    parse_map_file(const char *filename, t_game *game);
 
 # endif
