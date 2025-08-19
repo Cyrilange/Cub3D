@@ -18,7 +18,7 @@ static void add_line_to_map(t_map *map, char *line)
         free(map->map); // Free old map pointer
     map->map = new_map;
     map->map_height++;
-    map->map_width = ft_strlen(line); // Assume all lines same size
+    map->map_width = ft_strlen(line); // Assuming all lines same size
 }
 static void helper_map_line(t_game *game, char *line)
 {

@@ -12,6 +12,10 @@ void game_loop(void *param)
         rotate_left(&game->player);
     if (mlx_is_key_down(game->mlx, MLX_KEY_A))
         rotate_right(&game->player);
+    if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
+        rotate_left(&game->player);
+    if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
+        rotate_right(&game->player);
     if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
         mlx_close_window(game->mlx);
 

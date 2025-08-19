@@ -16,6 +16,8 @@ void	*check_malloc(size_t size)
 	return (ptr);
 }
 
+
+
 void    free_game(t_game *game)
 {
     if (game->texture.no)
@@ -39,7 +41,4 @@ void    free_game(t_game *game)
     
     if (game->img.img)
             mlx_delete_image(game->mlx, game->img.img);
-    
-    if (game->mlx)
-            mlx_terminate(game->mlx);
 }

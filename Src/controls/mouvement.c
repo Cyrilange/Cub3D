@@ -25,22 +25,27 @@ void move_backward(t_game *game)
 
 void rotate_left(t_player *player)
 {
-    double oldDirX = player->dir_x;
+    double oldPlaneX;
+    double oldDirX;
+
+    oldDirX = player->dir_x;
     player->dir_x = player->dir_x * cos(player->rot_speed) - player->dir_y * sin(player->rot_speed);
     player->dir_y = oldDirX * sin(player->rot_speed) + player->dir_y * cos(player->rot_speed);
 
-    double oldPlaneX = player->plan_x;
+    oldPlaneX = player->plan_x;
     player->plan_x = player->plan_x * cos(player->rot_speed) - player->plan_y * sin(player->rot_speed);
     player->plan_y = oldPlaneX * sin(player->rot_speed) + player->plan_y * cos(player->rot_speed);
 }
 
 void rotate_right(t_player *player)
 {
-    double oldDirX = player->dir_x;
+    double oldPlaneX;
+    double oldDirX;
+    
+    oldDirX = player->dir_x;
     player->dir_x = player->dir_x * cos(-player->rot_speed) - player->dir_y * sin(-player->rot_speed);
     player->dir_y = oldDirX * sin(-player->rot_speed) + player->dir_y * cos(-player->rot_speed);
-
-    double oldPlaneX = player->plan_x;
+    oldPlaneX = player->plan_x;
     player->plan_x = player->plan_x * cos(-player->rot_speed) - player->plan_y * sin(-player->rot_speed);
     player->plan_y = oldPlaneX * sin(-player->rot_speed) + player->plan_y * cos(-player->rot_speed);
 }
