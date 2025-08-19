@@ -22,6 +22,8 @@ SRC_FILES       = main.c \
 				  parsing/line.c \
 				  raycasting/draw_col.c \
 				  raycasting/raycast.c \
+				  controls/mouvement.c \
+				  controls/monitor.c \
 
 
 

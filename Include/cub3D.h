@@ -31,5 +31,13 @@ unsigned int    parse_color(char *s);
 void	draw_column(t_game *game, int x, int start, int end, uint32_t color);
 void	raycasting(t_game *game);
 void	calc_ray_direction(t_player *player, int x, double *rayDirX, double *rayDirY);
+//control
+void    try_move(t_game *game, double dx, double dy);
+void    move_forward(t_game *game);
+void    move_backward(t_game *game);
+void    rotate_left(t_player *player);
+void    rotate_right(t_player *player);
+void    handle_keypress(mlx_key_data_t keydata, void *param);
+
 
 # endif

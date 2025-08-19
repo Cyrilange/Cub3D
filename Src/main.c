@@ -18,15 +18,13 @@ int main(int argc, char **argv)
     game.img.img_width = WIN_WIDTH;
     game.img.img_height = WIN_HEIGHT;
 
-    raycast(&game); // draw the first frame
-
+    raycasting(&game);
     mlx_image_to_window(game.mlx, game.img.img, 0, 0);
 
-
+    mlx_key_hook(game.mlx, handle_keypress, &game);
 
     mlx_loop(game.mlx);
     mlx_terminate(game.mlx);
-
     return (0);
 }
 
