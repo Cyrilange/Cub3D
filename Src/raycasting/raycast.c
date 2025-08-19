@@ -1,25 +1,28 @@
 #include "cub3D.h"
 
-static void	perform_dda(t_map *map, t_ray *ray)
-{
-	while (ray->hit == 0)
+static void perform_dda(t_game *game, t_ray *ray) {
+    while (!ray->hit) 
 	{
-		if (ray->sideDistX < ray->sideDistY)
+		if (ray->mapX < 0 || ray->mapX >= game->map.map_width ||
+			ray->mapY < 0 || ray->mapY >= game->map.map_height)
 		{
-			ray->sideDistX += ray->deltaDistX;
-			ray->mapX += ray->stepX;
-			ray->side = 0;
-		}
-		else
-		{
-			ray->sideDistY += ray->deltaDistY;
-			ray->mapY += ray->stepY;
-			ray->side = 1;
-		}
-		if (map->map[ray->mapY][ray->mapX] == '1')
 			ray->hit = 1;
-	}
+			break;
+		}
+        if (ray->sideDistX < ray->sideDistY) {
+            ray->sideDistX += ray->deltaDistX;
+            ray->mapX += ray->stepX;
+            ray->side = 0;
+        } else {
+            ray->sideDistY += ray->deltaDistY;
+            ray->mapY += ray->stepY;
+            ray->side = 1;
+        }
+        if (game->map.map[ray->mapY][ray->mapX] == '1')
+            ray->hit = 1;
+    }
 }
+
 
 static void	calc_wall_distance_and_height(t_player *player, t_ray *ray)
 {
@@ -37,45 +40,23 @@ static void	calc_wall_distance_and_height(t_player *player, t_ray *ray)
 		ray->drawEnd = WIN_HEIGHT - 1;
 }
 
-static void	draw_ray_column(t_game *game, int x, t_ray *ray)
+
+void raycasting(t_game *game)
 {
-	int	y = 0;
+    int x;
+    t_ray ray;
 
-	while (y < ray->drawStart)
-	{
-		mlx_put_pixel(game->img.img, x, y, game->texture.ceilling);
-		y++;
-	}
-
-	uint32_t wall_color;
-	if (ray->side == 0)
-		wall_color = 0xAAAAAAFF;
-	else
-		wall_color = 0x555555FF;
-
-	draw_column(game, x, ray->drawStart, ray->drawEnd, wall_color);
-
-	y = ray->drawEnd;
-	while (y < WIN_HEIGHT)
-	{
-		mlx_put_pixel(game->img.img, x, y, game->texture.floor);
-		y++;
-	}
-}
-
-void	raycasting(t_game *game)
-{
-	int		x;
-	t_ray	ray;
-
-	x = 0;
-	while (x < WIN_WIDTH)
-	{
-		calc_ray_direction(&game->player, x, &ray.rayDirX, &ray.rayDirY);
-		init_ray_step(&game->player, ray.rayDirX, ray.rayDirY, &ray);
-		perform_dda(&game->map, &ray);
-		calc_wall_distance_and_height(&game->player, &ray);
-		draw_ray_column(game, x, &ray);
-		x++;
-	}
+    x = 0;
+    while (x < WIN_WIDTH)
+    {
+        init_ray(&ray, game, x);
+        init_ray_step(&ray, game);
+        perform_dda(game, &ray);
+        if (!ray.hit)
+            printf("Ray at column %d didn't hit any wall. mapX=%d, mapY=%d\n",
+                   x, ray.mapX, ray.mapY);
+        calc_wall_distance_and_height(&game->player, &ray);
+        draw_ray_column(game, x, &ray);
+        x++;
+    }
 }

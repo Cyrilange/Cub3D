@@ -20,16 +20,34 @@ static void add_line_to_map(t_map *map, char *line)
     map->map_height++;
     map->map_width = ft_strlen(line); // Assume all lines same size
 }
-static void helper_map_line(t_game *game, char *line) //just a helper for the norme to respect 25 lines
+static void helper_map_line(t_game *game, char *line)
 {
+    char *path;
+
     if (ft_strncmp(line, "NO ", 3) == 0)
-        game->texture.no_path = ft_strdup(line + 3);
+    {
+        path = ft_strtrim(line + 3, " \t\n");
+        game->texture.no_path = ft_strdup(path);
+        free(path);
+    }
     else if (ft_strncmp(line, "SO ", 3) == 0)
-        game->texture.so_path = ft_strdup(line + 3);
+    {
+        path = ft_strtrim(line + 3, " \t\n");
+        game->texture.so_path = ft_strdup(path);
+        free(path);
+    }
     else if (ft_strncmp(line, "EA ", 3) == 0)
-        game->texture.ea_path = ft_strdup(line + 3);
+    {
+        path = ft_strtrim(line + 3, " \t\n");
+        game->texture.ea_path = ft_strdup(path);
+        free(path);
+    }
     else if (ft_strncmp(line, "WE ", 3) == 0)
-        game->texture.we_path = ft_strdup(line + 3);
+    {
+        path = ft_strtrim(line + 3, " \t\n");
+        game->texture.we_path = ft_strdup(path);
+        free(path);
+    }
     else if (line[0] == 'F')
         game->texture.floor = parse_color(line + 2);
     else if (line[0] == 'C')

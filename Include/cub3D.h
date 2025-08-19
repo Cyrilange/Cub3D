@@ -20,17 +20,20 @@ void	init_textures(t_texture *textures);
 void	init_images(t_game *game);
 void	init_window(t_game *game);
 void	init_ray(t_ray *ray, t_game *game, int x);
-void	init_ray_step(t_player *player, double rayDirX, double rayDirY, t_ray *ray);
+void    init_ray_step(t_ray *ray, t_game *game);
 //tools
 void	*check_malloc(size_t size);
 void	error_function(const char *message);
 //parsing
-void    parse_map_file(const char *filename, t_game *game);
+void            parse_map_file(const char *filename, t_game *game);
 unsigned int    parse_color(char *s);
+void	        load_textures(t_game *game);
+void	find_player(t_game *game, double *start_x, double *start_y, char *start_dir);
 //3d
-void	draw_column(t_game *game, int x, int start, int end, uint32_t color);
+void	draw_ray_column(t_game *game, int x, t_ray *ray);
 void	raycasting(t_game *game);
 void	calc_ray_direction(t_player *player, int x, double *rayDirX, double *rayDirY);
+uint32_t	get_texture_pixel(t_texture *tex, int tex_id, int x, int y);
 //control
 void    try_move(t_game *game, double dx, double dy);
 void    move_forward(t_game *game);
@@ -38,6 +41,7 @@ void    move_backward(t_game *game);
 void    rotate_left(t_player *player);
 void    rotate_right(t_player *player);
 void    handle_keypress(mlx_key_data_t keydata, void *param);
+void game_loop(void *param);
 
 
 # endif

@@ -25,3 +25,21 @@ unsigned int    parse_color(char *s)
     free(split);
     return (color);
 }
+
+void	load_textures(t_game *game)
+{
+	game->texture.no = mlx_load_png(game->texture.no_path);
+	game->texture.so = mlx_load_png(game->texture.so_path);
+	game->texture.ea = mlx_load_png(game->texture.ea_path);
+	game->texture.we = mlx_load_png(game->texture.we_path);
+	if (!game->texture.no || !game->texture.so || !game->texture.ea || !game->texture.we)
+	{
+		ft_putstr_fd("Error loading textures\n", 2);
+		exit(EXIT_FAILURE);
+	}
+    printf("NO texture: %p, SO: %p, EA: %p, WE: %p\n",
+        game->texture.no, game->texture.so,
+        game->texture.ea, game->texture.we);
+ 
+}
+

@@ -1,21 +1,20 @@
 #include "cub3D.h"
 
-void handle_keypress(mlx_key_data_t keydata, void *param)
+void game_loop(void *param)
 {
     t_game *game = (t_game *)param;
 
-    if (keydata.action == MLX_PRESS)
-    {
-        if (keydata.key == MLX_KEY_W)
-            move_forward(game);
-        else if (keydata.key == MLX_KEY_S)
-            move_backward(game);
-        else if (keydata.key == MLX_KEY_A)
-            rotate_left(&game->player);
-        else if (keydata.key == MLX_KEY_D)
-            rotate_right(&game->player);
+    if (mlx_is_key_down(game->mlx, MLX_KEY_W))
+        move_forward(game);
+    if (mlx_is_key_down(game->mlx, MLX_KEY_S))
+        move_backward(game);
+    if (mlx_is_key_down(game->mlx, MLX_KEY_D))
+        rotate_left(&game->player);
+    if (mlx_is_key_down(game->mlx, MLX_KEY_A))
+        rotate_right(&game->player);
+    if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
+        mlx_close_window(game->mlx);
 
-        raycasting(game);
-        mlx_image_to_window(game->mlx, game->img.img, 0, 0);
-    }
+    raycasting(game);
+    mlx_image_to_window(game->mlx, game->img.img, 0, 0);
 }
