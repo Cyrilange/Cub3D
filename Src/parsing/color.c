@@ -37,9 +37,5 @@ void	load_textures(t_game *game)
 		ft_putstr_fd("Error loading textures\n", 2);
 		exit(EXIT_FAILURE);
 	}
-    printf("NO texture: %p, SO: %p, EA: %p, WE: %p\n",
-        game->texture.no, game->texture.so,
-        game->texture.ea, game->texture.we);
- 
 }
 

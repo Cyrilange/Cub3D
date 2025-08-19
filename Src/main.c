@@ -22,6 +22,7 @@ int main(int argc, char **argv)
     raycasting(&game);
     mlx_loop_hook(game.mlx, game_loop, &game);
     mlx_loop(game.mlx);
-    mlx_terminate(game.mlx);
+    free_game(&game);
+    //mlx_terminate(game.mlx);
     return (0);
 }
