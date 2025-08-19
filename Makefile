@@ -20,6 +20,8 @@ SRC_FILES       = main.c \
 				  tool/tool_part1.c \
 				  parsing/color.c \
 				  parsing/line.c \
+				  raycasting/draw_col.c \
+				  raycasting/raycast.c \
 
 
 

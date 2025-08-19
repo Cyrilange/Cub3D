@@ -13,6 +13,29 @@
 # include <memory.h>
 # include <fcntl.h>
 # include <MLX42/MLX42.h>
+# include "define.h"
+
+typedef struct s_ray
+{
+	double	cameraX;
+	double	rayDirX;
+	double	rayDirY;
+	int		mapX;
+	int		mapY;
+	double	sideDistX;
+	double	sideDistY;
+	double	deltaDistX;
+	double	deltaDistY;
+	int		stepX;
+	int		stepY;
+	int		hit;
+	int		side;
+	double	perpWallDist;
+	int		lineHeight;
+	int		drawStart;
+	int		drawEnd;
+}	t_ray;
+
 
 typedef struct s_img
 {
@@ -47,6 +70,7 @@ typedef struct s_player
 	double	move_speed;
 	double	rot_speed;
 	char	start_dir;
+	t_ray	ray[WIN_WIDTH];
 
 }       t_player;
 
