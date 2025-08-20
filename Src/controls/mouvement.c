@@ -31,7 +31,6 @@ void rotate_left(t_player *player)
     oldDirX = player->dir_x;
     player->dir_x = player->dir_x * cos(player->rot_speed) - player->dir_y * sin(player->rot_speed);
     player->dir_y = oldDirX * sin(player->rot_speed) + player->dir_y * cos(player->rot_speed);
-
     oldPlaneX = player->plan_x;
     player->plan_x = player->plan_x * cos(player->rot_speed) - player->plan_y * sin(player->rot_speed);
     player->plan_y = oldPlaneX * sin(player->rot_speed) + player->plan_y * cos(player->rot_speed);

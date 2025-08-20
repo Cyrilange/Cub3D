@@ -7,47 +7,49 @@ static void add_line_to_map(t_map *map, char *line)
     int     h;
     char    **new_map;
     int     i;
+    int     line_len;
 
+    // Trim the line to remove trailing whitespace/newlines
+    char *trimmed_line = ft_strtrim(line, " \t\n\r");
+    line_len = ft_strlen(trimmed_line);
+    
     h = map->map_height;
     new_map = check_malloc(sizeof(char *) * (h + 1));
     i = -1;
     while (++i < h)
         new_map[i] = map->map[i]; // Copy previous lines
-    new_map[h] = ft_strdup(line); // Add new line
+    new_map[h] = ft_strdup(trimmed_line); // Add new line
+    free(trimmed_line);
+    
     if (map->map)
         free(map->map); // Free old map pointer
     map->map = new_map;
     map->map_height++;
-    map->map_width = ft_strlen(line); // Assuming all lines same size
+    
+    // Update map_width to the maximum width encountered
+    if (line_len > map->map_width)
+        map->map_width = line_len;
 }
-static void helper_map_line(t_game *game, char *line)
+
+static void assign_texture_path(char **destination, const char *line, int offset)
 {
     char *path;
+    
+    path = ft_strtrim(line + offset, " \t\n");
+    *destination = ft_strdup(path);
+    free(path);
+}
 
+static void helper_map_line(t_game *game, char *line)
+{
     if (ft_strncmp(line, "NO ", 3) == 0)
-    {
-        path = ft_strtrim(line + 3, " \t\n");
-        game->texture.no_path = ft_strdup(path);
-        free(path);
-    }
+        assign_texture_path(&game->texture.no_path, line, 3);
     else if (ft_strncmp(line, "SO ", 3) == 0)
-    {
-        path = ft_strtrim(line + 3, " \t\n");
-        game->texture.so_path = ft_strdup(path);
-        free(path);
-    }
+        assign_texture_path(&game->texture.so_path, line, 3);
     else if (ft_strncmp(line, "EA ", 3) == 0)
-    {
-        path = ft_strtrim(line + 3, " \t\n");
-        game->texture.ea_path = ft_strdup(path);
-        free(path);
-    }
+        assign_texture_path(&game->texture.ea_path, line, 3);
     else if (ft_strncmp(line, "WE ", 3) == 0)
-    {
-        path = ft_strtrim(line + 3, " \t\n");
-        game->texture.we_path = ft_strdup(path);
-        free(path);
-    }
+        assign_texture_path(&game->texture.we_path, line, 3);
     else if (line[0] == 'F')
         game->texture.floor = parse_color(line + 2);
     else if (line[0] == 'C')
