@@ -23,6 +23,6 @@ int main(int argc, char **argv)
     mlx_loop_hook(game.mlx, game_loop, &game);
     mlx_loop(game.mlx);
     free_game(&game);
-    mlx_terminate(game.mlx);
+    //mlx_terminate(game.mlx);
     return (0);
 }

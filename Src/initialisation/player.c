@@ -37,7 +37,7 @@ void	init_player(t_player *player, double start_x, double start_y, char start)
 	player->pos_x = start_x;
 	player->pos_y = start_y;
 	player->move_speed = 0.5;//spped player
-	player->rot_speed = 1.5; //speed of the player
+	player->rot_speed = 0.3; //speed of the player
 	if (start == 'N')
 		init_north(player);
 	else if (start == 'S')

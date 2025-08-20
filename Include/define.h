@@ -18,8 +18,8 @@
 #define KEY_ESC 65307
 
 
-# define WIN_WIDTH  1980
-# define WIN_HEIGHT 920
+# define WIN_WIDTH  1280
+# define WIN_HEIGHT 720
 
 
 # endif

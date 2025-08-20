@@ -1,32 +1,39 @@
 #include "cub3D.h"
 #include "get_next_line/get_next_line_bonus.h"
 
-/* Add a line to the map */
 static void add_line_to_map(t_map *map, char *line)
 {
     int     h;
     char    **new_map;
     int     i;
     int     line_len;
+    char    *trimmed_line;
 
-    // Trim the line to remove trailing whitespace/newlines
-    char *trimmed_line = ft_strtrim(line, " \t\n\r");
-    line_len = ft_strlen(trimmed_line);
+    trimmed_line = ft_strtrim(line, " \t\n\r");
+    if (!trimmed_line)
+        return;
     
+    line_len = ft_strlen(trimmed_line);
     h = map->map_height;
-    new_map = check_malloc(sizeof(char *) * (h + 1));
+    
+    new_map = check_malloc(sizeof(char *) * (h + 2));
+    
+    for (i = 0; i < h + 2; i++)
+        new_map[i] = NULL;
+    
     i = -1;
     while (++i < h)
-        new_map[i] = map->map[i]; // Copy previous lines
-    new_map[h] = ft_strdup(trimmed_line); // Add new line
+        new_map[i] = map->map[i];
+    
+    new_map[h] = ft_strdup(trimmed_line);
     free(trimmed_line);
     
     if (map->map)
-        free(map->map); // Free old map pointer
+        free(map->map);
+    
     map->map = new_map;
     map->map_height++;
     
-    // Update map_width to the maximum width encountered
     if (line_len > map->map_width)
         map->map_width = line_len;
 }
