@@ -28,3 +28,12 @@ Each screen column corresponds to a ray.
 The ray advances through the map until it hits a wall.
 The wall’s distance determines the height of the line drawn.
 Repeating this for all columns produces a 3D-like view from a 2D map.
+
+
+<img width="1537" height="917" alt="image" src="https://github.com/user-attachments/assets/fb5f380f-7099-474c-8570-330a6a1275f8" />
+
+
+<img width="1537" height="917" alt="image" src="https://github.com/user-attachments/assets/573af151-7e57-4513-84ac-953403373e89" />
+
+
+
