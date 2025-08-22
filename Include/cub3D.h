@@ -42,6 +42,8 @@ void    move_backward(t_game *game);
 void    rotate_left(t_player *player);
 void    rotate_right(t_player *player);
 void    handle_keypress(mlx_key_data_t keydata, void *param);
+void move_left(t_game *game);
+void move_right(t_game *game);
 void game_loop(void *param);
 
 
