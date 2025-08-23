@@ -1,16 +1,38 @@
 #include "cub3D.h"
 
+static char *call_cub(char  *map_path)
+{
+    // Définir le préfixe du chemin
+    const char *prefix = "Include/";
+    char *full_path;
+
+    full_path = malloc(strlen(prefix) + ft_strlen(map_path) + 1);
+    if (!full_path)
+    {
+        printf("Erreur: Échec de l'allocation mémoire pour le chemin de la carte.\n");
+        return (NULL);
+    }
+    strcpy(full_path, prefix); //need to add this functions in lbft or in utils 
+    strcat(full_path, map_path); //need to add this function  in utils or libft
+    return (full_path);
+}
+
 int main(int argc, char **argv)
 {
     t_game game;
+    char *map_file_path;
 
     if (argc != 2) {
-        ft_putstr_fd("Usage: ./cub3D <map.cub>\n", 2);
+        ft_putstr_fd("Usage: ./cub3D <[maps][maps_not_valid]/map.cub>\n", 2);
         return (1);
     }
-    check_name(argv[1]);
+    map_file_path = call_cub(argv[1]);
+    if (!map_file_path)
+        return (1);
+    check_name(map_file_path);
     init_game_struct(&game);
-    parse_map_file(argv[1], &game);
+    parse_map_file(map_file_path, &game);
+    free(map_file_path);
     find_player(&game, &game.player.pos_x, &game.player.pos_y, &game.player.start_dir);
     init_player(&game.player, game.player.pos_x, game.player.pos_y, game.player.start_dir);
     load_textures(&game);
@@ -23,6 +45,5 @@ int main(int argc, char **argv)
     mlx_loop_hook(game.mlx, game_loop, &game);
     mlx_loop(game.mlx);
     free_game(&game);
-    //mlx_terminate(game.mlx);
     return (0);
 }
