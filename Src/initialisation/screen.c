@@ -2,7 +2,8 @@
 
 void	init_window(t_game *game)
 {
-	game->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "cub3D", false);
+    mlx_set_setting(MLX_STRETCH_IMAGE, true);
+	game->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "cub3D", true);
 	if (!game->mlx)
 	{
 		error_function("Error: Failed to initialize window\n");
