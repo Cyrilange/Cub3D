@@ -39,24 +39,42 @@ static void	calc_wall_distance_and_height(t_player *player, t_ray *ray)
 	if (ray->drawEnd >= WIN_HEIGHT)
 		ray->drawEnd = WIN_HEIGHT - 1;
 }
+static void draw_background(t_game *game)
+{
+    int x;
+    int y;
+
+    y = -1;
+    while (++y < WIN_HEIGHT / 2)
+    {
+        x = -1;
+        while (++x < WIN_WIDTH)
+            ft_put_pixel(game, x, y, game->texture.ceilling);
+    }
+    y = WIN_HEIGHT / 2;
+    while ( y < WIN_HEIGHT)
+    {
+        x = -1;
+        while (++x < WIN_WIDTH)
+            ft_put_pixel(game, x, y, game->texture.floor);
+        y++;
+    }
+}
 
 
-void raycasting(t_game *game)
+void raycasting(t_game *game) 
 {
     int x;
     t_ray ray;
 
-    x = 0;
-    while (x < WIN_WIDTH)
+    x = -1;
+    draw_background(game);
+    while (++x < WIN_WIDTH)
     {
         init_ray(&ray, game, x);
         init_ray_step(&ray, game);
         perform_dda(game, &ray);
-        if (!ray.hit)
-            printf("Ray at column %d didn't hit any wall. mapX=%d, mapY=%d\n",
-                   x, ray.mapX, ray.mapY);
         calc_wall_distance_and_height(&game->player, &ray);
         draw_ray_column(game, x, &ray);
-        x++;
     }
 }

@@ -26,6 +26,8 @@ typedef struct s_ray
 	double	sideDistY;
 	double	deltaDistX;
 	double	deltaDistY;
+	double	wallX;
+	double	wallY;
 	int		stepX;
 	int		stepY;
 	int		hit;

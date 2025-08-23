@@ -35,6 +35,7 @@ void	draw_ray_column(t_game *game, int x, t_ray *ray);
 void	raycasting(t_game *game);
 void	calc_ray_direction(t_player *player, int x, double *rayDirX, double *rayDirY);
 uint32_t	get_texture_pixel(t_texture *tex, int tex_id, int x, int y);
+void ft_put_pixel(t_game *game, int x, int y, uint32_t color);
 //control
 void    try_move(t_game *game, double dx, double dy);
 void    move_forward(t_game *game);
