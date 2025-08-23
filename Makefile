@@ -24,6 +24,7 @@ SRC_FILES       = main.c \
 				  raycasting/raycast.c \
 				  controls/mouvement.c \
 				  controls/monitor.c \
+				  check/name.c \
 
 
 

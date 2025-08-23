@@ -46,6 +46,8 @@ void    handle_keypress(mlx_key_data_t keydata, void *param);
 void move_left(t_game *game);
 void move_right(t_game *game);
 void game_loop(void *param);
+//check
+void check_name(char *file);
 
 
 # endif
