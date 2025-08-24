@@ -48,6 +48,8 @@ void move_right(t_game *game);
 void game_loop(void *param);
 //check
 void check_name(char *file);
+int is_walkable(t_map *map, int x, int y);
+void	clamp_tex_coords(int *texX, int *texY, int tw, int th);
 
 
 # endif
