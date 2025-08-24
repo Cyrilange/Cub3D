@@ -49,4 +49,6 @@ void free_game(t_game *game)
         mlx_delete_texture(game->texture.ea);
     if (game->texture.we)
         mlx_delete_texture(game->texture.we);
+    if (game->img.img) mlx_delete_image(game->mlx, game->img.img);
+    mlx_terminate(game->mlx);
 }
