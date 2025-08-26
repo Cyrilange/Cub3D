@@ -16,8 +16,6 @@ static char *call_cub(char  *map_path)
     strcat(full_path, map_path); //need to add this function  in utils or libft
     return (full_path);
 }
-
-// helper.c
 // helper.c
 static void init_graphics(t_game *game)
 {
@@ -42,20 +40,15 @@ int main(int argc, char **argv)
     map_file_path = call_cub(argv[1]);
     if (!map_file_path)
         return 1;
-
     check_name(map_file_path);
     init_game_struct(&game);
     parse_map_file(map_file_path, &game);
     free(map_file_path);
-
     find_player(&game, &game.player.pos_x, &game.player.pos_y, &game.player.start_dir);
     init_player(&game.player, game.player.pos_x, game.player.pos_y, game.player.start_dir);
-
     init_graphics(&game);
-
     mlx_loop_hook(game.mlx, game_loop, &game);
     mlx_loop(game.mlx);
-
     free_game(&game);
     return 0;
 }
