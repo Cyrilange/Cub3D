@@ -8,10 +8,7 @@ static char *call_cub(char  *map_path)
 
     full_path = malloc(strlen(prefix) + ft_strlen(map_path) + 1);
     if (!full_path)
-    {
-        printf("Erreur: Échec de l'allocation mémoire pour le chemin de la carte.\n");
-        return (NULL);
-    }
+        error_function("need ./cub3d maps/name.cub");
     strcpy(full_path, prefix); //need to add this functions in lbft or in utils 
     strcat(full_path, map_path); //need to add this function  in utils or libft
     return (full_path);
@@ -27,8 +24,6 @@ int main(int argc, char **argv)
         return (1);
     }
     map_file_path = call_cub(argv[1]);
-    if (!map_file_path)
-        return (1);
     check_name(map_file_path);
     init_game_struct(&game);
     parse_map_file(map_file_path, &game);

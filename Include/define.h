@@ -16,6 +16,8 @@
 #define KEY_A 97
 #define KEY_D 100
 #define KEY_ESC 65307
+#define FOV 0.66
+#define FOV_INVERS -0.66
 
 
 # define WIN_WIDTH  1980
