@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   player.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csalamit <csalamit@student.42malaga.com>   #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-08-26 16:39:34 by csalamit          #+#    #+#             */
+/*   Updated: 2025-08-26 16:39:34 by csalamit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 static void	init_north(t_player *player)
@@ -36,8 +48,11 @@ void	init_player(t_player *player, double start_x, double start_y, char start)
 {
 	player->pos_x = start_x;
 	player->pos_y = start_y;
+
 	player->move_speed = 0.2;//spped player
 	player->rot_speed = 0.2; //speed of the player
+=======
+
 	if (start == 'N')
 		init_north(player);
 	else if (start == 'S')

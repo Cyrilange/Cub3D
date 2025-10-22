@@ -25,6 +25,7 @@ SRC_FILES       = main.c \
 				  controls/mouvement.c \
 				  controls/monitor.c \
 				  check/name.c \
+				  check/walk.c \
 
 
 

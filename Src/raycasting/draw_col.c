@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_col.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csalamit <csalamit@student.42malaga.com>   #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-08-26 16:40:03 by csalamit          #+#    #+#             */
+/*   Updated: 2025-08-26 16:40:03 by csalamit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 void	calc_ray_direction(t_player *player, int x, double *rayDirX, double *rayDirY)
@@ -34,44 +46,55 @@ void ft_put_pixel(t_game *game, int x, int y, uint32_t color)
     pixels[idx + 3] = color & 0xFF;         // A
 }
 
+static void draw_ray_column_helper(t_game *game, t_ray *ray, mlx_texture_t *t, int x)
+{
+    int texX, texY, d, y;
+    uint32_t color;
+    unsigned char *pix = t->pixels;
+    int th = t->height;
+
+
+    texX = (int)(ray->wallX * (double)t->width);
+    if ((ray->side == 0 && ray->rayDirX > 0) || (ray->side == 1 && ray->rayDirY < 0))
+        texX = t->width - texX - 1;
+    y = ray->drawStart;
+    while (y < ray->drawEnd)
+    {
+        d = y * 256 - WIN_HEIGHT * 128 + ray->lineHeight * 128;
+        texY = ((d * th) / ray->lineHeight) / 256;
+        clamp_tex_coords(&texX, &texY, t->width, th);
+        int idx = (texY * t->width + texX) * 4;
+        color = (pix[idx] << 24) | (pix[idx+1] << 16) | (pix[idx+2] << 8) | pix[idx+3];
+        ft_put_pixel(game, x, y, color);
+        y++;
+    }
+}
 
 void draw_ray_column(t_game *game, int x, t_ray *ray)
 {
     mlx_texture_t *t;
-    uint32_t color;
-    int texX, texY, d, y, tex_id;
+    int tex_id;
 
     if (ray->side == 0)
         ray->wallX = game->player.pos_y + ray->perpWallDist * ray->rayDirY;
     else
         ray->wallX = game->player.pos_x + ray->perpWallDist * ray->rayDirX;
     ray->wallX -= floor(ray->wallX);
-
-    if (ray->side == 0 && ray->rayDirX < 0) tex_id = 0;
-    else if (ray->side == 0 && ray->rayDirX >= 0) tex_id = 1;
-    else if (ray->side == 1 && ray->rayDirY < 0) tex_id = 2;
-    else tex_id = 3;
-
-    if (tex_id == 0) t = game->texture.no;
-    else if (tex_id == 1) t = game->texture.so;
-    else if (tex_id == 2) t = game->texture.we;
-    else t = game->texture.ea;
-
-    texX = (int)(ray->wallX * (double)t->width);
-    if ((ray->side == 0 && ray->rayDirX > 0) || (ray->side == 1 && ray->rayDirY < 0))
-        texX = t->width - texX - 1;
-
-    unsigned char *pix = t->pixels;
-    int tw = t->width;
-    int th = t->height;
-	y = ray->drawStart; 
-    while (y < ray->drawEnd)
-    {
-        d = y * 256 - WIN_HEIGHT * 128 + ray->lineHeight * 128;
-        texY = ((d * th) / ray->lineHeight) / 256;
-        int idx = (texY * tw + texX) * 4;
-        color = (pix[idx] << 24) | (pix[idx+1] << 16) | (pix[idx+2] << 8) | pix[idx+3];
-        ft_put_pixel(game, x, y, color);
-		y++;
-    }
+    if (ray->side == 0 && ray->rayDirX < 0)
+        tex_id = 0;
+    else if (ray->side == 0 && ray->rayDirX >= 0)
+        tex_id = 1;
+    else if (ray->side == 1 && ray->rayDirY < 0)
+        tex_id = 2;
+    else
+        tex_id = 3;
+    if (tex_id == 0)
+        t = game->texture.no;
+    else if (tex_id == 1)
+        t = game->texture.so;
+    else if (tex_id == 2)
+        t = game->texture.we;
+    else
+        t = game->texture.ea;
+    draw_ray_column_helper(game, ray, t, x);
 }

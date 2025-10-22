@@ -1,22 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mouvement.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csalamit <csalamit@student.42malaga.com>   #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-08-26 16:39:19 by csalamit          #+#    #+#             */
+/*   Updated: 2025-08-26 16:39:19 by csalamit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 void try_move(t_game *game, double dx, double dy)
 {
-	double	newX;
-	double	newY;
+    double newX = game->player.pos_x + dx;
+    double newY = game->player.pos_y + dy;
 
-	newX = game->player.pos_x + dx;
-	newY = game->player.pos_y + dy;
-	if (newX >= 0 && newX < game->map.map_width && 
-		newY >= 0 && newY < game->map.map_height)
-	{
-		if (game->map.map[(int)newY][(int)game->player.pos_x] == '0')
-			game->player.pos_y = newY;
-	
-		if (game->map.map[(int)game->player.pos_y][(int)newX] == '0')
-			game->player.pos_x = newX;
-	}
+ 
+    if (is_walkable(&game->map, (int)game->player.pos_x, (int)newY))
+        game->player.pos_y = newY;
+    if (is_walkable(&game->map, (int)newX, (int)game->player.pos_y))
+        game->player.pos_x = newX;
 }
+
 
 static void rotate_player(t_player *player, double angle)
 {

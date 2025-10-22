@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   monitor.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csalamit <csalamit@student.42malaga.com>   #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-08-26 16:39:14 by csalamit          #+#    #+#             */
+/*   Updated: 2025-08-26 16:39:14 by csalamit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 void move_forward(t_game *game)
@@ -19,7 +31,7 @@ void move_left(t_game *game)
 		try_move(game,
 				game->player.dir_y * game->player.move_speed,
 				-game->player.dir_x * game->player.move_speed);
-	else // Est ou Ouest
+	else
 		try_move(game,
 				game->player.dir_y * game->player.move_speed,
 				-game->player.dir_x * game->player.move_speed);
