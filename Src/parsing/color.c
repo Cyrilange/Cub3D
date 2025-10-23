@@ -1,29 +1,39 @@
+
 #include "cub3D.h"
 
-
-unsigned int    parse_color(char *s)
+static unsigned int	create_color(int r, int g, int b)
 {
-    char        *trim;
-    char        **split;
-    int         rgb[3];
-    unsigned int color;
-    int         i;
+	if (r < 0) r = 0;
+	if (r > 255) r = 255;
+	if (g < 0) g = 0;
+	if (g > 255) g = 255;
+	if (b < 0) b = 0;
+	if (b > 255) b = 255;
+	return ((r << 24) | (g << 16) | (b << 8) | 0xFF);
+}
 
-    trim = ft_strtrim(s, " \t\n");
-    split = ft_split(trim, ',');
-    free(trim);
-    rgb[0] = ft_atoi(split[0]); // R
-    rgb[1] = ft_atoi(split[1]); // G
-    rgb[2] = ft_atoi(split[2]); // B
-    color = ((unsigned int)rgb[0] << 24)
-          | ((unsigned int)rgb[1] << 16)
-          | ((unsigned int)rgb[2] << 8)
-          | 0xFF;
-    i = -1;
-    while (split[++i])
-        free(split[i]);
-    free(split);
-    return (color);
+unsigned int	parse_color(char *s)
+{
+	int		r;
+	int		g;
+	int		b;
+	char	**split;
+	char	*trim;
+	int		i;
+
+	trim = ft_strtrim(s, " \t\n");
+	split = ft_split(trim, ',');
+	free(trim);
+	if (!split || !split[0] || !split[1] || !split[2])
+		error_function("Error: invalid color format");
+	r = ft_atoi(split[0]);
+	g = ft_atoi(split[1]);
+	b = ft_atoi(split[2]);
+	i = -1;
+	while (split[++i])
+		free(split[i]);
+	free(split);
+	return (create_color(r, g, b));
 }
 
 void	load_textures(t_game *game)
@@ -32,10 +42,9 @@ void	load_textures(t_game *game)
 	game->texture.so = mlx_load_png(game->texture.so_path);
 	game->texture.ea = mlx_load_png(game->texture.ea_path);
 	game->texture.we = mlx_load_png(game->texture.we_path);
-	if (!game->texture.no || !game->texture.so || !game->texture.ea || !game->texture.we)
-	{
-		ft_putstr_fd("Error loading textures\n", 2);
-		exit(EXIT_FAILURE);
-	}
+	if (!game->texture.no || !game->texture.so
+		|| !game->texture.ea || !game->texture.we)
+		error_function("Error: failed to load textures");
 }
+
 

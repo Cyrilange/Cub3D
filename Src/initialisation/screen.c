@@ -12,6 +12,10 @@ void	init_window(t_game *game)
 
 void    init_images(t_game *game)
 {
+    game->img.img = NULL;
+game->img.img_width = 0;
+game->img.img_height = 0;
+
     game->texture.no = mlx_load_png(game->texture.no_path);
     if (!game->texture.no)
         error_function("Error: failed to load NO texture");

@@ -1,85 +1,110 @@
 #include "cub3D.h"
 #include "get_next_line/get_next_line_bonus.h"
 
-static void add_line_to_map(t_map *map, char *line)
+typedef struct s_line
 {
-    int     h;
-    char    **new_map;
-    int     i;
-    int     line_len;
-    char    *trimmed_line;
+	char			*content;
+	struct s_line	*next;
+}	t_line;
 
-    trimmed_line = ft_strtrim(line, " \t\n\r");
-    if (!trimmed_line)
-        return;
-    
-    line_len = ft_strlen(trimmed_line);
-    h = map->map_height;
-    
-    new_map = check_malloc(sizeof(char *) * (h + 2));
-    
-    for (i = 0; i < h + 2; i++)
-        new_map[i] = NULL;
-    
-    i = -1;
-    while (++i < h)
-        new_map[i] = map->map[i];
-    
-    new_map[h] = ft_strdup(trimmed_line);
-    free(trimmed_line);
-    
-    if (map->map)
-        free(map->map);
-    
-    map->map = new_map;
-    map->map_height++;
-    
-    if (line_len > map->map_width)
-        map->map_width = line_len;
+static void	add_line(t_line **head, char *line)
+{
+	t_line	*new;
+	t_line	*tmp;
+	char	*trimmed;
+
+	trimmed = ft_strtrim(line, " \t\n\r");
+	if (!trimmed || !*trimmed)
+	{
+		free(trimmed);
+		return;
+	}
+	new = check_malloc(sizeof(t_line));
+	new->content = ft_strdup(trimmed);
+	new->next = NULL;
+	free(trimmed);
+	if (!*head)
+		*head = new;
+	else
+	{
+		tmp = *head;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
+	}
 }
 
-static void assign_texture_path(char **destination, const char *line, int offset)
+static void	assign_texture_path(char **dest, const char *line, int offset)
 {
-    char *path;
-    
-    path = ft_strtrim(line + offset, " \t\n");
-    *destination = ft_strdup(path);
-    free(path);
+	char	*path;
+
+	path = ft_strtrim(line + offset, " \t\n");
+	*dest = ft_strdup(path);
+	free(path);
 }
 
-static void helper_map_line(t_game *game, char *line)
+static void	handle_line(t_game *game, char *line, t_line **lines)
 {
-    if (ft_strncmp(line, "NO ", 3) == 0)
-        assign_texture_path(&game->texture.no_path, line, 3);
-    else if (ft_strncmp(line, "SO ", 3) == 0)
-        assign_texture_path(&game->texture.so_path, line, 3);
-    else if (ft_strncmp(line, "EA ", 3) == 0)
-        assign_texture_path(&game->texture.ea_path, line, 3);
-    else if (ft_strncmp(line, "WE ", 3) == 0)
-        assign_texture_path(&game->texture.we_path, line, 3);
-    else if (line[0] == 'F')
-        game->texture.floor = parse_color(line + 2);
-    else if (line[0] == 'C')
-        game->texture.ceilling = parse_color(line + 2);
-    else if (line[0] == '1' || line[0] == '0' || line[0] == 'N' ||
-             line[0] == 'S' || line[0] == 'E' || line[0] == 'W')
-        add_line_to_map(&game->map, line);
+	if (ft_strncmp(line, "NO ", 3) == 0)
+		assign_texture_path(&game->texture.no_path, line, 3);
+	else if (ft_strncmp(line, "SO ", 3) == 0)
+		assign_texture_path(&game->texture.so_path, line, 3);
+	else if (ft_strncmp(line, "EA ", 3) == 0)
+		assign_texture_path(&game->texture.ea_path, line, 3);
+	else if (ft_strncmp(line, "WE ", 3) == 0)
+		assign_texture_path(&game->texture.we_path, line, 3);
+	else if (line[0] == 'F')
+		game->texture.floor = parse_color(line + 2);
+	else if (line[0] == 'C')
+		game->texture.ceilling = parse_color(line + 2);
+	else if (ft_strchr("01NSEW", line[0]))
+		add_line(lines, line);
 }
 
-void parse_map_file(const char *filename, t_game *game)
+static void	convert_list_to_map(t_map *map, t_line *list)
 {
-    int     fd;
-    char    *line;
+	t_line	*tmp;
+	int		i;
 
-    fd = open(filename, O_RDONLY);
-    if (fd < 0)
-        error_function("Error : cannot open map file");
-    line = get_next_line(fd);
-    while (line)
-    {
-        helper_map_line(game, line);
-        free(line);
-        line = get_next_line(fd);
-    }
-    close(fd);
+	tmp = list;
+	map->map_height = 0;
+	map->map_width = 0;
+	while (tmp)
+	{
+		map->map_height++;
+		if ((int)ft_strlen(tmp->content) > map->map_width)
+			map->map_width = ft_strlen(tmp->content);
+		tmp = tmp->next;
+	}
+	map->map = check_malloc(sizeof(char *) * (map->map_height + 1));
+	i = 0;
+	while (list)
+	{
+		map->map[i++] = list->content;
+		tmp = list->next;
+		free(list);
+		list = tmp;
+	}
+	map->map[i] = NULL;
+}
+
+void	parse_map_file(const char *filename, t_game *game)
+{
+	int		fd;
+	char	*line;
+	t_line	*lines;
+
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		error_function("Error: cannot open map file");
+	lines = NULL;
+	line = get_next_line(fd);
+	while (line)
+	{
+		handle_line(game, line, &lines);
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	convert_list_to_map(&game->map, lines);
 }
