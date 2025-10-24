@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csalamit <csalamit@student.42malaga.com>   #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-08-26 16:40:27 by csalamit          #+#    #+#             */
+/*   Updated: 2025-08-26 16:40:27 by csalamit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef CUB3D_H
 #define CUB3D_H
@@ -48,6 +59,8 @@ void move_right(t_game *game);
 void game_loop(void *param);
 //check
 void check_name(char *file);
+int is_walkable(t_map *map, int x, int y);
+void	clamp_tex_coords(int *texX, int *texY, int tw, int th);
 
 
 # endif

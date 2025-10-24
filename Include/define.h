@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   define.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csalamit <csalamit@student.42malaga.com>   #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-08-26 16:40:33 by csalamit          #+#    #+#             */
+/*   Updated: 2025-08-26 16:40:33 by csalamit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef DEFINE_H
 #define DEFINE_H
@@ -16,6 +27,8 @@
 #define KEY_A 97
 #define KEY_D 100
 #define KEY_ESC 65307
+#define FOV 0.66
+#define FOV_INVERS -0.66
 
 
 # define WIN_WIDTH  1980

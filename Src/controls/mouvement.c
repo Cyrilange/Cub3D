@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mouvement.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csalamit <csalamit@student.42malaga.com>   #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-08-26 16:39:19 by csalamit          #+#    #+#             */
+/*   Updated: 2025-08-26 16:39:19 by csalamit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 void try_move(t_game *game, double dx, double dy)
@@ -17,6 +29,7 @@ void try_move(t_game *game, double dx, double dy)
 			game->player.pos_x = new_x;
 	}
 }
+
 
 static void rotate_player(t_player *player, double angle)
 {
