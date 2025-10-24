@@ -1,0 +1,210 @@
+[33mcommit 7ce285334c153100129df61e208160840b5ad983[m[33m ([m[1;36mHEAD -> [m[1;32mdev/fix-to-close-of-the-wall[m[33m)[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Fri Oct 24 23:35:11 2025 +0200
+
+    player alone fix
+
+[33mcommit 5ca50b9ce9ac21e750bb5d5457a737f1a2cfdc43[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Thu Oct 23 21:28:20 2025 +0200
+
+    maj 23 october
+
+[33mcommit c64bd71b08859d0be496497740159f8acc641396[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Wed Oct 22 16:52:34 2025 +0200
+
+    d
+
+[33mcommit a8623242ae54896d72083a50ce8f9b4ead5b1ddd[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Wed Oct 22 14:35:03 2025 +0200
+
+    wall
+
+[33mcommit 75f435c2ff5329ea02ab2fb8d0cf88b2d0a5243b[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Sat Aug 23 14:57:02 2025 +0200
+
+    just add a static function so no need to call the map or mapnorvalid with Include , just to be more pro
+
+[33mcommit ee4438f5c4df5391a1542f2bf1fb0d8c17000827[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Sat Aug 23 14:38:46 2025 +0200
+
+    add good direction'
+
+[33mcommit 605d15a44be5f444757b54078ca4b37790699c4a[m
+Merge: f733230 611d18b
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Sat Aug 23 13:53:00 2025 +0200
+
+    Merge branch 'main' of github.com:Cyrilange/Cub3D
+
+[33mcommit f73323031db78551957278d508cc40538eb0c54e[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Sat Aug 23 13:52:53 2025 +0200
+
+    aa
+
+[33mcommit 611d18b3defe24b04af42f381049e0bf8ed79de8[m
+Author: Your Name <csalamit@c3r7s5.42malaga.com>
+Date:   Fri Aug 22 20:41:35 2025 +0200
+
+    add check .cub , problem with lateral mouvement , left and right , depends on what you looking they can change
+
+[33mcommit 2fb500dbf4646529c1da72b8f4aa50f4ecf93898[m
+Author: Your Name <csalamit@c3r7s5.42malaga.com>
+Date:   Fri Aug 22 20:26:46 2025 +0200
+
+    move elft and right
+
+[33mcommit 68133a3b9a5d699290ae8198c5dc03996ff5a7c8[m
+Author: Your Name <csalamit@c3r7s5.42malaga.com>
+Date:   Fri Aug 22 18:53:31 2025 +0200
+
+    resize screen
+
+[33mcommit d3cc88b244927c5b9a887d7f6795624e67bf3a97[m
+Author: Cyril Salamite <106234259+Cyrilange@users.noreply.github.com>
+Date:   Thu Aug 21 14:07:31 2025 +0200
+
+    Update README.md
+
+[33mcommit c360b67a5618492abfa4e7d0e8fcab1139e74cfc[m
+Author: Cyril Salamite <106234259+Cyrilange@users.noreply.github.com>
+Date:   Thu Aug 21 14:07:01 2025 +0200
+
+    Update README.md
+
+[33mcommit 2aff6dc127314dcb13a57d43f39b373385aa153f[m
+Author: Cyril Salamite <106234259+Cyrilange@users.noreply.github.com>
+Date:   Wed Aug 20 22:57:50 2025 +0200
+
+    Create README.md
+
+[33mcommit 5cfee6d8933361ababa990e8d3808c8b57eebccc[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Wed Aug 20 12:38:25 2025 +0200
+
+    mlx issue
+
+[33mcommit 002cfdf8a916c4eef315005c0b823c3a30549e1f[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Wed Aug 20 11:35:34 2025 +0200
+
+    ameriore get next line
+
+[33mcommit e170edcd60d1d16bcb9d72b5a9d91336249184e1[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Wed Aug 20 11:24:48 2025 +0200
+
+    ameriore get next line
+
+[33mcommit a78dec8784f3f4dc6684ef119e9cc827d9af30bf[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Tue Aug 19 19:39:20 2025 +0200
+
+    a
+
+[33mcommit ca3493b91704464bff0abd6cc4a3bd48861daab7[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Tue Aug 19 17:13:35 2025 +0200
+
+    fixing leaks, next step will be refactoring , then check if all good
+
+[33mcommit 7b37d39183da651e1445982a7cdfcdd9149f2960[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Tue Aug 19 16:49:06 2025 +0200
+
+    rotspeed can change the speed
+
+[33mcommit 85d2b81ed0dc71ddddb0e03c914bd323f41b246a[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Tue Aug 19 16:33:18 2025 +0200
+
+    3d done
+
+[33mcommit 89fefe9309369fb8b0520b0ee2ed7a1150a30c54[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Tue Aug 19 12:12:34 2025 +0200
+
+    raycasting
+
+[33mcommit 4105e52f30ff0af53d3974a2e0e08f04ad25d4b8[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Tue Aug 19 12:02:00 2025 +0200
+
+    raycasting
+
+[33mcommit d69d6289307d53cf4764c56efa0618c0d1b38c0d[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Mon Aug 18 21:11:16 2025 +0200
+
+    init, parsing, color parsing tested
+
+[33mcommit 00d1d0211ae905ce7458b7782e1f6997c5283cb7[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Mon Aug 18 17:05:26 2025 +0200
+
+    start  parsing
+
+[33mcommit a710e40328213f9b7dbe143e245f22e9c0ff6b40[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Mon Aug 18 16:58:05 2025 +0200
+
+    start  parsing
+
+[33mcommit c4d33ade67d202475bc36e914a6ef40fdd4540bd[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Mon Aug 18 16:48:29 2025 +0200
+
+    init finish, next step is parsing
+
+[33mcommit 7cfd20bf12dd754d578ce7ce1669de28cfb69365[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Mon Aug 18 14:00:59 2025 +0200
+
+    add texture struct
+
+[33mcommit 34da6376da4739fee8d30b3bbb9c59d5fd27c9a5[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Mon Aug 18 13:07:38 2025 +0200
+
+    init finish, next step is parsing
+
+[33mcommit d39913ede8fc91adf7912a117c54f8043b252e98[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Mon Aug 18 12:38:44 2025 +0200
+
+    init finish, next step is parsing
+
+[33mcommit e8d4c0e6c59d8d0eca7ec0b2bf2fd6921ac9b66f[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Mon Aug 18 12:36:00 2025 +0200
+
+    init finish, next step is parsing
+
+[33mcommit 5bc371f51ce6b16108d1bd4396044b0bea9bd8c1[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Sun Aug 17 19:54:04 2025 +0200
+
+    add texture struct
+
+[33mcommit 9eea1ca98af6cc28f1f6a82179203271224ae353[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Sun Aug 17 19:11:18 2025 +0200
+
+    initialisation
+
+[33mcommit 98e48dbfff3cdc73fadd6a77e0527c84312b8327[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Sun Aug 17 16:37:35 2025 +0200
+
+    Makefile finish
+
+[33mcommit 4f8ac1e47c10c1307c759d3b446ee82fd0f21164[m
+Author: Cyrilange <cyril.r.a.salamite@gmail.com>
+Date:   Sun Aug 17 13:33:28 2025 +0200
+
+    start
