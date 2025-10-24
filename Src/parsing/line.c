@@ -1,12 +1,6 @@
 #include "cub3D.h"
 #include "get_next_line/get_next_line_bonus.h"
 
-typedef struct s_line
-{
-	char			*content;
-	struct s_line	*next;
-}	t_line;
-
 static void	add_line(t_line **head, char *line)
 {
 	t_line	*new;

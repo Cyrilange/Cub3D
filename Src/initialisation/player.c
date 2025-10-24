@@ -53,25 +53,27 @@ void	find_player(t_game *game, double *start_x, double *start_y, char *start_dir
 {
 	int	y;
 	int	x;
+	int	found;
 
-	y = 0;
-    while (y < game->map.map_height)
-    {
-		x = 0;
-        while (x < game->map.map_width)
-        {
-            char c = game->map.map[y][x];
-            if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-            {
-                *start_x = x + 0.5;
-                *start_y = y + 0.5;
-                *start_dir = c;
-                game->map.map[y][x] = '0';
-                return;
-            }
-			x++;
-        }
-		y++;
-    }
-    error_function("Error: no player start found in map");
+	found = 0;
+	y = -1;
+	while (++y < game->map.map_height)
+	{
+		x = -1;
+		while (++x < game->map.map_width)
+		{
+			char c = game->map.map[y][x];
+			if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+			{
+				if (found++)
+					error_function("Error: multiple player starts in map");
+				*start_x = x + 0.5;
+				*start_y = y + 0.5;
+				*start_dir = c;
+				game->map.map[y][x] = '0';
+			}
+		}
+	}
+	if (found == 0)
+		error_function("Error: no player start found in map");
 }

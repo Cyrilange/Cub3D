@@ -13,21 +13,17 @@ void	init_window(t_game *game)
 void    init_images(t_game *game)
 {
     game->img.img = NULL;
-game->img.img_width = 0;
-game->img.img_height = 0;
-
+    game->img.img_width = 0;
+    game->img.img_height = 0;
     game->texture.no = mlx_load_png(game->texture.no_path);
     if (!game->texture.no)
         error_function("Error: failed to load NO texture");
-
     game->texture.so = mlx_load_png(game->texture.so_path);
     if (!game->texture.so)
         error_function("Error: failed to load SO texture");
-
     game->texture.ea = mlx_load_png(game->texture.ea_path);
     if (!game->texture.ea)
         error_function("Error: failed to load EA texture");
-
     game->texture.we = mlx_load_png(game->texture.we_path);
     if (!game->texture.we)
         error_function("Error: failed to load WE texture");
@@ -45,17 +41,14 @@ void init_ray(t_ray *ray, t_game *game, int x)
     ray->rayDirY = game->player.dir_y + game->player.plan_y * ray->cameraX;
     ray->mapX = (int)game->player.pos_x;
     ray->mapY = (int)game->player.pos_y;
-
     if (ray->rayDirX == 0)
         ray->deltaDistX = 1e30;
     else
         ray->deltaDistX = fabs(1 / ray->rayDirX);
-
     if (ray->rayDirY == 0)
         ray->deltaDistY = 1e30;
     else
         ray->deltaDistY = fabs(1 / ray->rayDirY);
-
     ray->hit = 0;
 }
 
@@ -75,7 +68,5 @@ void init_ray_step(t_ray *ray, t_game *game)
     } else {
         ray->stepY = 1;
         ray->sideDistY = (ray->mapY + 1.0 - game->player.pos_y) * ray->deltaDistY;
-    }
-    
-    
+    }  
 }

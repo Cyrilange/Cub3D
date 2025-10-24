@@ -1,0 +1,13 @@
+NO ./Include/assets/walls/street.png
+SO ./Include/assets/walls/obito2.png
+WE ./Include/assets/walls/street2.png
+EA ./Include/assets/walls/obito4.png
+
+
+F 50,50,50
+C 150,150,200
+
+1111111111
+1000001111
+100W000000
+1111111111

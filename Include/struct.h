@@ -15,6 +15,12 @@
 # include <MLX42/MLX42.h>
 # include "define.h"
 
+typedef struct s_line
+{
+	char			*content;
+	struct s_line	*next;
+}	t_line;
+
 typedef struct s_ray
 {
 	double	cameraX;

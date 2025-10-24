@@ -2,19 +2,19 @@
 
 void try_move(t_game *game, double dx, double dy)
 {
-	double	newX;
-	double	newY;
+	double	new_x;
+	double	new_y;
 
-	newX = game->player.pos_x + dx;
-	newY = game->player.pos_y + dy;
-	if (newX >= 0 && newX < game->map.map_width && 
-		newY >= 0 && newY < game->map.map_height)
+	new_x = game->player.pos_x + dx;
+	new_y = game->player.pos_y + dy;
+	if (new_x >= 0 && new_x < game->map.map_width && 
+		new_y >= 0 && new_y < game->map.map_height)
 	{
-		if (game->map.map[(int)newY][(int)game->player.pos_x] == '0')
-			game->player.pos_y = newY;
+		if (game->map.map[(int)new_y][(int)game->player.pos_x] == '0')
+			game->player.pos_y = new_y;
 	
-		if (game->map.map[(int)game->player.pos_y][(int)newX] == '0')
-			game->player.pos_x = newX;
+		if (game->map.map[(int)game->player.pos_y][(int)new_x] == '0')
+			game->player.pos_x = new_x;
 	}
 }
 
