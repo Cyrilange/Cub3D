@@ -53,10 +53,8 @@ static void	draw_tex_line(t_game *g, int x, t_ray *r, mlx_texture_t *t)
 		r->d = y * 256 - WIN_HEIGHT * 128 + r->lineHeight * 128;
 		r->ty = ((r->d * t->height) / r->lineHeight) / 256;
 		r->idx = (r->ty * t->width + r->tx) * 4;
-		color = (pixels[r->idx] << 24)
-			| (pixels[r->idx + 1] << 16)
-			| (pixels[r->idx + 2] << 8)
-			| pixels[r->idx + 3];
+		color = (pixels[r->idx] << 24) | (pixels[r->idx
+				+ 1] << 16) | (pixels[r->idx + 2] << 8) | pixels[r->idx + 3];
 		ft_put_pixel(g, x, y++, color);
 	}
 }

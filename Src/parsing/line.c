@@ -11,7 +11,7 @@ static void	add_line(t_line **head, char *line)
 	if (!trimmed || !*trimmed)
 	{
 		free(trimmed);
-		return;
+		return ;
 	}
 	new = check_malloc(sizeof(t_line));
 	new->content = ft_strdup(trimmed);

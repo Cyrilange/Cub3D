@@ -1,24 +1,23 @@
 #include "cub3D.h"
 
-void try_move(t_game *game, double dx, double dy)
+void	try_move(t_game *game, double dx, double dy)
 {
 	double	new_x;
 	double	new_y;
 
 	new_x = game->player.pos_x + dx;
 	new_y = game->player.pos_y + dy;
-	if (new_x >= 0 && new_x < game->map.map_width && 
+	if (new_x >= 0 && new_x < game->map.map_width &&
 		new_y >= 0 && new_y < game->map.map_height)
 	{
 		if (game->map.map[(int)new_y][(int)game->player.pos_x] == '0')
 			game->player.pos_y = new_y;
-	
 		if (game->map.map[(int)game->player.pos_y][(int)new_x] == '0')
 			game->player.pos_x = new_x;
 	}
 }
 
-static void rotate_player(t_player *player, double angle)
+static void	rotate_player(t_player *player, double angle)
 {
 	double	oldDirX;
 	double	oldPlaneX;
@@ -35,12 +34,12 @@ static void rotate_player(t_player *player, double angle)
 	player->plan_y = oldPlaneX * sin_angle + player->plan_y * cos_angle;
 }
 
-void rotate_left(t_player *player)
+void	rotate_left(t_player *player)
 {
 	rotate_player(player, player->rot_speed);
 }
 
-void rotate_right(t_player *player)
+void	rotate_right(t_player *player)
 {
 	rotate_player(player, -player->rot_speed);
 }

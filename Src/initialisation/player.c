@@ -32,11 +32,12 @@ static void	init_west(t_player *player)
 	player->plan_y = -0.66;
 }
 
-void	init_player(t_player *player, double start_x, double start_y, char start)
+void	init_player(t_player *player, double start_x, double start_y,
+		char start)
 {
 	player->pos_x = start_x;
 	player->pos_y = start_y;
-	player->move_speed = 0.2;//spped player
+	player->move_speed = 0.2; //spped player
 	player->rot_speed = 0.08; //speed of the player
 	if (start == 'N')
 		init_north(player);
@@ -46,34 +47,4 @@ void	init_player(t_player *player, double start_x, double start_y, char start)
 		init_east(player);
 	else if (start == 'W')
 		init_west(player);
-}
-
-
-void	find_player(t_game *game, double *start_x, double *start_y, char *start_dir)
-{
-	int	y;
-	int	x;
-	int	found;
-
-	found = 0;
-	y = -1;
-	while (++y < game->map.map_height)
-	{
-		x = -1;
-		while (++x < game->map.map_width)
-		{
-			char c = game->map.map[y][x];
-			if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-			{
-				if (found++)
-					error_function("Error: multiple player starts in map");
-				*start_x = x + 0.5;
-				*start_y = y + 0.5;
-				*start_dir = c;
-				game->map.map[y][x] = '0';
-			}
-		}
-	}
-	if (found == 0)
-		error_function("Error: no player start found in map");
 }

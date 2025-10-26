@@ -3,12 +3,18 @@
 
 static unsigned int	create_color(int r, int g, int b)
 {
-	if (r < 0) r = 0;
-	if (r > 255) r = 255;
-	if (g < 0) g = 0;
-	if (g > 255) g = 255;
-	if (b < 0) b = 0;
-	if (b > 255) b = 255;
+	if (r < 0)
+		r = 0;
+	if (r > 255)
+		r = 255;
+	if (g < 0)
+		g = 0;
+	if (g > 255)
+		g = 255;
+	if (b < 0)
+		b = 0;
+	if (b > 255)
+		b = 255;
 	return ((r << 24) | (g << 16) | (b << 8) | 0xFF);
 }
 
@@ -42,9 +48,7 @@ void	load_textures(t_game *game)
 	game->texture.so = mlx_load_png(game->texture.so_path);
 	game->texture.ea = mlx_load_png(game->texture.ea_path);
 	game->texture.we = mlx_load_png(game->texture.we_path);
-	if (!game->texture.no || !game->texture.so
-		|| !game->texture.ea || !game->texture.we)
+	if (!game->texture.no || !game->texture.so || !game->texture.ea
+		|| !game->texture.we)
 		error_function("Error: failed to load textures");
 }
-
-

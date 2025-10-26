@@ -12,12 +12,11 @@ void	init_game_struct(t_game *game)
 	game->mlx = NULL;
 	game->win = NULL;
 	init_textures(&game->texture);
-    init_map(&game->map);
+	init_map(&game->map);
 }
 
-void init_game(t_game *game)
+void	init_game(t_game *game)
 {
 	// parsing function()
-    init_images(game);
+	init_images(game);
 }
-

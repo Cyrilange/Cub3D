@@ -4,8 +4,8 @@ static void	perform_dda(t_game *game, t_ray *ray)
 {
 	while (!ray->hit)
 	{
-		if (ray->mapX < 0 || ray->mapX >= game->map.map_width
-			|| ray->mapY < 0 || ray->mapY >= game->map.map_height)
+		if (ray->mapX < 0 || ray->mapX >= game->map.map_width || ray->mapY < 0
+			|| ray->mapY >= game->map.map_height)
 		{
 			ray->hit = 1;
 			break ;

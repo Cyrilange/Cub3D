@@ -1,47 +1,45 @@
 #include "cub3D.h"
 
-void move_forward(t_game *game)
+void	move_forward(t_game *game)
 {
 	try_move(game, game->player.dir_x * game->player.move_speed,
-					game->player.dir_y * game->player.move_speed);
+		game->player.dir_y * game->player.move_speed);
 }
 
-
-void move_backward(t_game *game)
+void	move_backward(t_game *game)
 {
 	try_move(game, -game->player.dir_x * game->player.move_speed,
-					-game->player.dir_y * game->player.move_speed);
+		-game->player.dir_y * game->player.move_speed);
 }
 
-void move_left(t_game *game)
+void	move_left(t_game *game)
 {
 	if (game->player.dir_x == 0)
 		try_move(game,
-				game->player.dir_y * game->player.move_speed,
-				-game->player.dir_x * game->player.move_speed);
-	else // Est ou Ouest
-		try_move(game,
-				game->player.dir_y * game->player.move_speed,
-				-game->player.dir_x * game->player.move_speed);
-}
-
-void move_right(t_game *game)
-{
-	if (game->player.dir_x == 0)
-		try_move(game,
-				-game->player.dir_y * game->player.move_speed,
-				game->player.dir_x * game->player.move_speed);
+			game->player.dir_y * game->player.move_speed,
+			-game->player.dir_x * game->player.move_speed);
 	else
 		try_move(game,
-				-game->player.dir_y * game->player.move_speed,
-				game->player.dir_x * game->player.move_speed);
+			game->player.dir_y * game->player.move_speed,
+			-game->player.dir_x * game->player.move_speed);
 }
 
-
-void game_loop(void *param)
+void	move_right(t_game *game)
 {
-	t_game *game;
-	
+	if (game->player.dir_x == 0)
+		try_move(game,
+			-game->player.dir_y * game->player.move_speed,
+			game->player.dir_x * game->player.move_speed);
+	else
+		try_move(game,
+			-game->player.dir_y * game->player.move_speed,
+			game->player.dir_x * game->player.move_speed);
+}
+
+void	game_loop(void *param)
+{
+	t_game	*game;
+
 	game = (t_game *)param;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
 		move_forward(game);

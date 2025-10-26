@@ -1,109 +1,104 @@
 
 #ifndef STRUCT_H
-#define STRUCT_H
+# define STRUCT_H
 
-# include <unistd.h>
-# include <limits.h>
-# include <stdlib.h>
-
-# include <stdarg.h>
-# include <stdio.h>
-# include <limits.h>
-# include <stdbool.h>
-# include <memory.h>
-# include <fcntl.h>
-# include <MLX42/MLX42.h>
 # include "define.h"
+# include <MLX42/MLX42.h>
+# include <fcntl.h>
+# include <limits.h>
+# include <memory.h>
+# include <stdarg.h>
+# include <stdbool.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_line
 {
 	char			*content;
 	struct s_line	*next;
-}	t_line;
+}					t_line;
 
 typedef struct s_ray
 {
-	double	cameraX;
-	double	rayDirX;
-	double	rayDirY;
-	int		mapX;
-	int		mapY;
-	double	sideDistX;
-	double	sideDistY;
-	double	deltaDistX;
-	double	deltaDistY;
-	double	wallX;
-	double	wallY;
-	int		stepX;
-	int		stepY;
-	int		hit;
-	int		side;
-	double	perpWallDist;
-	int		lineHeight;
-	int		drawStart;
-	int		drawEnd;
-	int		tx;         // texture X
-	int		ty;         // texture Y
-	int		d;          // distance for texture
-	int		idx;        // index in pixel array
-}	t_ray;
-
+	double			cameraX;
+	double			rayDirX;
+	double			rayDirY;
+	int				mapX;
+	int				mapY;
+	double			sideDistX;
+	double			sideDistY;
+	double			deltaDistX;
+	double			deltaDistY;
+	double			wallX;
+	double			wallY;
+	int				stepX;
+	int				stepY;
+	int				hit;
+	int				side;
+	double			perpWallDist;
+	int				lineHeight;
+	int				drawStart;
+	int				drawEnd;
+	int tx;  // texture X
+	int ty;  // texture Y
+	int d;   // distance for texture
+	int idx; // index in pixel array
+}					t_ray;
 
 typedef struct s_img
 {
-	mlx_image_t	*img;
-	int			img_width;
-	int			img_height;
-}	t_img;
+	mlx_image_t		*img;
+	int				img_width;
+	int				img_height;
+}					t_img;
 
 typedef struct s_texture
 {
-    mlx_texture_t 	*no;
+	mlx_texture_t	*no;
 	char			*no_path;
-    mlx_texture_t 	*so;
+	mlx_texture_t	*so;
 	char			*so_path;
-    mlx_texture_t 	*ea;
+	mlx_texture_t	*ea;
 	char			*ea_path;
-    mlx_texture_t 	*we;
+	mlx_texture_t	*we;
 	char			*we_path;
 	unsigned int	ceilling;
 	unsigned int	floor;
 
-}       t_texture;
+}					t_texture;
 
 typedef struct s_player
 {
-	double	pos_x;
-	double	pos_y;
-	double	dir_x;
-	double	dir_y;
-	double	plan_x;
-	double	plan_y;
-	double	move_speed;
-	double	rot_speed;
-	char	start_dir;
-	t_ray	ray[WIN_WIDTH];
+	double			pos_x;
+	double			pos_y;
+	double			dir_x;
+	double			dir_y;
+	double			plan_x;
+	double			plan_y;
+	double			move_speed;
+	double			rot_speed;
+	char			start_dir;
+	t_ray			ray[WIN_WIDTH];
 
-}       t_player;
+}					t_player;
 
 typedef struct s_map
 {
-	char	**map;
-	int		map_width;
-	int		map_height;
-} t_map;
-
+	char			**map;
+	int				map_width;
+	int				map_height;
+}					t_map;
 
 typedef struct s_game
 {
-	mlx_t		*mlx;
-	void		*win;
-	t_player	player;
-	t_texture	texture;
-	t_map		map;
-	t_img		img; //image buffer
+	mlx_t			*mlx;
+	void			*win;
+	t_player		player;
+	t_texture		texture;
+	t_map			map;
+	t_img img; //image buffer
 
-} t_game;
+}					t_game;
 
-
-# endif  
+#endif

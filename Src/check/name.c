@@ -13,13 +13,11 @@ int	check_wall(t_game *game)
 		{
 			if (game->map.map[y][x] == '0')
 			{
-				if (y == 0 || x == 0
-					|| y == game->map.map_height - 1
-					|| x == game->map.map_width - 1
-					|| game->map.map[y - 1][x] == ' '
-					|| game->map.map[y + 1][x] == ' '
-					|| game->map.map[y][x - 1] == ' '
-					|| game->map.map[y][x + 1] == ' ')
+				if (y == 0 || x == 0 || y == game->map.map_height - 1
+					|| x == game->map.map_width - 1 || game->map.map[y
+						- 1][x] == ' ' || game->map.map[y + 1][x] == ' '
+					|| game->map.map[y][x - 1] == ' ' || game->map.map[y][x
+						+ 1] == ' ')
 					error_function("Error: map not closed");
 			}
 			x++;
@@ -28,7 +26,6 @@ int	check_wall(t_game *game)
 	}
 	return (0);
 }
-
 
 void	check_name(char *file)
 {
