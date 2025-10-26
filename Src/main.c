@@ -11,36 +11,25 @@
 /* ************************************************************************** */
 #include "cub3D.h"
 
-int main(int argc, char **argv)
+int	main(int ac, char **av)
 {
-    t_game game;
-    char *map_file_path;
+	t_game	g;
 
-    if (argc != 2) {
-        ft_putstr_fd("Usage: ./cub3D <map.cub>\n", 2);
-        return (1);
-    }
-
-    map_file_path = argv[1];
-
-    check_name(map_file_path);
-    init_game_struct(&game);
-    parse_map_file(map_file_path, &game);
-    find_player(&game, &game.player.pos_x, &game.player.pos_y, &game.player.start_dir);
-    init_player(&game.player, game.player.pos_x, game.player.pos_y, game.player.start_dir);
-    load_textures(&game);
-    init_window(&game);
-
-    game.img.img = mlx_new_image(game.mlx, WIN_WIDTH, WIN_HEIGHT);
-    if (!game.img.img)
-        error_function("Error: failed to create main image buffer");
-    if (mlx_image_to_window(game.mlx, game.img.img, 0, 0) < 0)
-        error_function("Error: failed to attach image buffer to window");
-
-    raycasting(&game);
-    mlx_loop_hook(game.mlx, game_loop, &game);
-    mlx_loop(game.mlx);
-
-    free_game(&game);
-    return (0);
+	if (ac != 2)
+		error_function("Usage: ./cub3D <map.cub>");
+	check_name(av[1]);
+	init_game_struct(&g);
+	parse_map_file(av[1], &g);
+	check_wall(&g);
+	find_player(&g, &g.player.pos_x, &g.player.pos_y, &g.player.start_dir);
+	init_player(&g.player, g.player.pos_x, g.player.pos_y, g.player.start_dir);
+	load_textures(&g);
+	init_window(&g);
+	g.img.img = mlx_new_image(g.mlx, WIN_WIDTH, WIN_HEIGHT);
+	if (!g.img.img || mlx_image_to_window(g.mlx, g.img.img, 0, 0) < 0)
+		error_function("Error: image buffer failed");
+	raycasting(&g);
+	mlx_loop_hook(g.mlx, game_loop, &g);
+	mlx_loop(g.mlx);
+	free_game(&g);
 }

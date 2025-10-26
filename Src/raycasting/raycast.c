@@ -8,7 +8,7 @@ static void	perform_dda(t_game *game, t_ray *ray)
 			|| ray->mapY < 0 || ray->mapY >= game->map.map_height)
 		{
 			ray->hit = 1;
-			break;
+			break ;
 		}
 		if (ray->sideDistX < ray->sideDistY)
 		{

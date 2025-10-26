@@ -48,6 +48,7 @@ void move_right(t_game *game);
 void game_loop(void *param);
 //check
 void check_name(char *file);
+int	check_wall(t_game *game);
 
 
 # endif

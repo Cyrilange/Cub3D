@@ -42,6 +42,10 @@ typedef struct s_ray
 	int		lineHeight;
 	int		drawStart;
 	int		drawEnd;
+	int		tx;         // texture X
+	int		ty;         // texture Y
+	int		d;          // distance for texture
+	int		idx;        // index in pixel array
 }	t_ray;
 
 

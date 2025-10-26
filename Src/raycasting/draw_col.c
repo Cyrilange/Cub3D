@@ -39,24 +39,25 @@ void	ft_put_pixel(t_game *g, int x, int y, uint32_t c)
 
 static void	draw_tex_line(t_game *g, int x, t_ray *r, mlx_texture_t *t)
 {
-	unsigned char	*p;
-	uint32_t		col;
-	int				y, d, ty, tx, i;
+	unsigned char	*pixels;
+	uint32_t		color;
+	int				y;
 
-	tx = (int)(r->wallX * t->width);
+	r->tx = (int)(r->wallX * t->width);
 	if ((r->side == 0 && r->rayDirX > 0) || (r->side == 1 && r->rayDirY < 0))
-		tx = t->width - tx - 1;
-	p = t->pixels;
+		r->tx = t->width - r->tx - 1;
+	pixels = t->pixels;
 	y = r->drawStart;
 	while (y < r->drawEnd)
 	{
-		d = y * 256 - WIN_HEIGHT * 128 + r->lineHeight * 128;
-		ty = ((d * t->height) / r->lineHeight) / 256;
-		i = (ty * t->width + tx) * 4;
-		col = (p[i] << 24) | (p[i + 1] << 16)
-			| (p[i + 2] << 8) | p[i + 3];
-		ft_put_pixel(g, x, y, col);
-		y++;
+		r->d = y * 256 - WIN_HEIGHT * 128 + r->lineHeight * 128;
+		r->ty = ((r->d * t->height) / r->lineHeight) / 256;
+		r->idx = (r->ty * t->width + r->tx) * 4;
+		color = (pixels[r->idx] << 24)
+			| (pixels[r->idx + 1] << 16)
+			| (pixels[r->idx + 2] << 8)
+			| pixels[r->idx + 3];
+		ft_put_pixel(g, x, y++, color);
 	}
 }
 
