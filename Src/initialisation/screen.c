@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:13:57 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 11:13:58 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/27 12:23:24 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,35 @@ void	init_window(t_game *game)
 	}
 }
 
+void	load_textures(t_game *game)
+{
+	game->texture.no = mlx_load_png(game->texture.no_path);
+	game->texture.so = mlx_load_png(game->texture.so_path);
+	game->texture.ea = mlx_load_png(game->texture.ea_path);
+	game->texture.we = mlx_load_png(game->texture.we_path);
+
+	if (!game->texture.no || !game->texture.so
+		|| !game->texture.ea || !game->texture.we)
+	{
+		free_game(game);
+		error_function("Error: failed to load textures");
+	}
+}
+
 void	init_images(t_game *game)
 {
 	game->img.img = NULL;
 	game->img.img_width = 0;
 	game->img.img_height = 0;
-	game->texture.no = mlx_load_png(game->texture.no_path);
-	if (!game->texture.no)
-		error_function("Error: failed to load NO texture");
-	game->texture.so = mlx_load_png(game->texture.so_path);
-	if (!game->texture.so)
-		error_function("Error: failed to load SO texture");
-	game->texture.ea = mlx_load_png(game->texture.ea_path);
-	if (!game->texture.ea)
-		error_function("Error: failed to load EA texture");
-	game->texture.we = mlx_load_png(game->texture.we_path);
-	if (!game->texture.we)
-		error_function("Error: failed to load WE texture");
+	load_textures(game);
 	game->img.img = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
-	if (!game->img.img)
-		error_function("Error: failed to create main image buffer");
-	if (mlx_image_to_window(game->mlx, game->img.img, 0, 0) < 0)
-		error_function("Error: failed to attach image buffer to window");
+	if (!game->img.img || mlx_image_to_window(game->mlx, game->img.img, 0, 0) < 0)
+	{
+		free_game(game);
+		error_function("Error: failed to create/attach main image");
+	}
 }
+
 
 void	init_ray(t_ray *ray, t_game *game, int x)
 {
