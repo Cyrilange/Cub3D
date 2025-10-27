@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:13:40 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 11:13:42 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/27 14:59:16 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void			init_ray_step(t_ray *ray, t_game *game);
 //tools
 void			*check_malloc(size_t size);
 void			error_function(const char *message);
+void			g_error_function(t_game *game, const char *message);
 void			free_game(t_game *game);
 //parsing
 void			parse_map_file(const char *filename, t_game *game);

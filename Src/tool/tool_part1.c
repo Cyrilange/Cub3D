@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:14:30 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 11:14:31 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/27 14:58:59 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 void	error_function(const char *message)
 {
+	printf(RED "%s \n" RESET, message);
+	exit(EXIT_FAILURE);
+}
+
+void	g_error_function(t_game *game, const char *message)
+{
+	if (game)
+		free_game(game);
 	printf(RED "%s \n" RESET, message);
 	exit(EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:40:17 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 14:53:07 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/27 14:59:42 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	find_player(t_game *g, double *s_x, double *s_y, char *start_dir)
 			if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 			{
 				if (found++)
-					error_function("Error: multiple player starts in map");
+				g_error_function(g, "Error: multiple player starts in map");
 				*s_x = i[1] + 0.5;
 				*s_y = i[0] + 0.5;
 				*start_dir = c;
@@ -38,7 +38,7 @@ void	find_player(t_game *g, double *s_x, double *s_y, char *start_dir)
 		}
 	}
 	if (!found)
-		error_function("Error: no player found in map");
+	g_error_function(g, "Error: no player found in map");
 }
 
 int	main(int ac, char **av)
