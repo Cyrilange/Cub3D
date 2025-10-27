@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csalamit <csalamit@student.42malaga.com>   #+#  +:+       +#+        */
+/*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-09-03 08:59:24 by csalamit          #+#    #+#             */
-/*   Updated: 2024-09-03 08:59:24 by csalamit         ###   ########.fr       */
+/*   Created: 2024/09/03 08:59:24 by csalamit          #+#    #+#             */
+/*   Updated: 2025/10/27 16:16:21 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,3 @@ char	*get_next_line(int fd)
 	buffer[fd] = ft_update(buffer[fd]);
 	return (line);
 }
-
