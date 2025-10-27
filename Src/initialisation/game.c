@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:10:35 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 11:10:36 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/27 14:53:41 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ void	init_game_struct(t_game *game)
 
 void	init_game(t_game *game)
 {
-	// parsing function()
 	init_images(game);
 }

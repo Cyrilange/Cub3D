@@ -6,18 +6,18 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:40:17 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 14:46:30 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/27 14:53:07 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void find_player(t_game *g, double *s_x, double *s_y, char *start_dir)
+void	find_player(t_game *g, double *s_x, double *s_y, char *start_dir)
 {
 	int		i[2];
 	int		found;
 	char	c;
-	
+
 	found = 0;
 	i[0] = -1;
 	while (++i[0] < g->map.map_height)
@@ -40,7 +40,6 @@ void find_player(t_game *g, double *s_x, double *s_y, char *start_dir)
 	if (!found)
 		error_function("Error: no player found in map");
 }
-
 
 int	main(int ac, char **av)
 {
