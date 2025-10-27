@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:13:57 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 12:23:24 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/27 13:05:51 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	load_textures(t_game *game)
 	game->texture.so = mlx_load_png(game->texture.so_path);
 	game->texture.ea = mlx_load_png(game->texture.ea_path);
 	game->texture.we = mlx_load_png(game->texture.we_path);
-
 	if (!game->texture.no || !game->texture.so
 		|| !game->texture.ea || !game->texture.we)
 	{
@@ -44,13 +43,13 @@ void	init_images(t_game *game)
 	game->img.img_height = 0;
 	load_textures(game);
 	game->img.img = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
-	if (!game->img.img || mlx_image_to_window(game->mlx, game->img.img, 0, 0) < 0)
+	if (!game->img.img
+		|| mlx_image_to_window(game->mlx, game->img.img, 0, 0) < 0)
 	{
 		free_game(game);
 		error_function("Error: failed to create/attach main image");
 	}
 }
-
 
 void	init_ray(t_ray *ray, t_game *game, int x)
 {
