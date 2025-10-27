@@ -17,7 +17,7 @@
 # define KEY_D 100
 # define KEY_ESC 65307
 
-# define WIN_WIDTH 1980
-# define WIN_HEIGHT 1280
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 680
 
 #endif

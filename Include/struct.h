@@ -13,92 +13,90 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+// Linked list node to temporarily store lines while parsing the map
 typedef struct s_line
 {
-	char			*content;
-	struct s_line	*next;
+	char			*content;	// The content of the line
+	struct s_line	*next;		// Pointer to the next line
 }					t_line;
-
+// Structure storing all raycasting-related variables for a single ray
 typedef struct s_ray
 {
-	double			cameraX;
-	double			rayDirX;
-	double			rayDirY;
-	int				mapX;
-	int				mapY;
-	double			sideDistX;
-	double			sideDistY;
-	double			deltaDistX;
-	double			deltaDistY;
-	double			wallX;
-	double			wallY;
-	int				stepX;
-	int				stepY;
-	int				hit;
-	int				side;
-	double			perpWallDist;
-	int				lineHeight;
-	int				drawStart;
-	int				drawEnd;
-	int tx;  // texture X
-	int ty;  // texture Y
-	int d;   // distance for texture
-	int idx; // index in pixel array
+	double			cameraX;		// X-coordinate in camera space (-1 to 1)
+	double			rayDirX;		// Ray direction vector X
+	double			rayDirY;		// Ray direction vector Y
+	int				mapX;			// Current X position in map grid
+	int				mapY;			// Current Y position in map grid
+	double			sideDistX;		// Distance to next X side
+	double			sideDistY;		// Distance to next Y side
+	double			deltaDistX;		// Distance between two X intersections
+	double			deltaDistY;		// Distance between two Y intersections
+	double			wallX;			// Exact hit position on wall (for texture)
+	int				stepX;			// Step direction on X axis (-1 or 1)
+	int				stepY;			// Step direction on Y axis (-1 or 1)
+	int				hit;			// Flag: 1 if wall hit, 0 otherwise
+	int				side;			// Side of the wall hit (0=X, 1=Y)
+	double			perpWallDist;	// Corrected perpendicular distance
+	int				lineHeight;		// Height of the wall slice on screen
+	int				drawStart;		// Start pixel for drawing the wall
+	int				drawEnd;		// End pixel for drawing the wall
+	int				tx;				// Texture X coordinate
+	int				ty;				// Texture Y coordinate
+	int				d;				// Intermediate distance for texture calc
+	int				idx;			// Pixel index in texture buffer
 }					t_ray;
-
+// Wrapper for MLX image data (used as render buffer)
 typedef struct s_img
 {
-	mlx_image_t		*img;
-	int				img_width;
-	int				img_height;
+	mlx_image_t		*img;			// MLX image pointer
+	int				img_width;		// Image width
+	int				img_height;		// Image height
 }					t_img;
-
+// Holds all texture resources and their RGB data
 typedef struct s_texture
 {
-	mlx_texture_t	*no;
-	char			*no_path;
-	mlx_texture_t	*so;
-	char			*so_path;
-	mlx_texture_t	*ea;
-	char			*ea_path;
-	mlx_texture_t	*we;
-	char			*we_path;
-	unsigned int	ceilling;
-	unsigned int	floor;
-
+	mlx_texture_t	*no;			// North wall texture
+	char			*no_path;		// Path to north texture file
+	mlx_texture_t	*so;			// South wall texture
+	char			*so_path;		// Path to south texture file
+	mlx_texture_t	*ea;			// East wall texture
+	char			*ea_path;		// Path to east texture file
+	mlx_texture_t	*we;			// West wall texture
+	char			*we_path;		// Path to west texture file
+	unsigned int	ceilling;		// Ceiling color (RGB encoded)
+	unsigned int	floor;			// Floor color (RGB encoded)
 }					t_texture;
-
+// Player info and precomputed rays for each screen column
 typedef struct s_player
 {
-	double			pos_x;
-	double			pos_y;
-	double			dir_x;
-	double			dir_y;
-	double			plan_x;
-	double			plan_y;
-	double			move_speed;
-	double			rot_speed;
-	char			start_dir;
-	t_ray			ray[WIN_WIDTH];
-
+	double			pos_x;			// Player position X
+	double			pos_y;			// Player position Y
+	double			dir_x;			// Direction vector X
+	double			dir_y;			// Direction vector Y
+	double			plan_x;			// Camera plane X (for FOV)
+	double			plan_y;			// Camera plane Y (for FOV)
+	double			move_speed;		// Movement speed
+	double			rot_speed;		// Rotation speed
+	char			start_dir;		// Initial orientation (N, S, E, W)
+	t_ray			ray[WIN_WIDTH];	// Ray data for each screen column
 }					t_player;
-
+// Map information and dimensions
 typedef struct s_map
 {
-	char			**map;
-	int				map_width;
-	int				map_height;
+	char			**map;			// 2D array of map characters
+	int				map_width;		// Map width (max line length)
+	int				map_height;		// Map height (line count)
 }					t_map;
-
+// Main game structure containing everything
 typedef struct s_game
 {
-	mlx_t			*mlx;
-	void			*win;
-	t_player		player;
-	t_texture		texture;
-	t_map			map;
-	t_img img; //image buffer
-
+	mlx_t			*mlx;			// MLX context pointer
+	void			*win;			// window handle
+	t_player		player;			// Player and ray info
+	t_texture		texture;		// Texture data and colors
+	t_map			map;			// Map data
+	t_img			img;			// Main rendering image buffer
 }					t_game;
+
 
 #endif
