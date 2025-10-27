@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:10:01 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 15:08:05 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/27 15:18:18 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ typedef struct s_line
 	char			*content;	// The content of the line
 	struct s_line	*next;		// Pointer to the next line
 }					t_line;
-//struct for the color RGB because of the norm , with no struct there would be too many variables
+//struct for the color RGB because of the norm
 typedef struct s_rgb
 {
-	int r; //red
-	int g; //green
-	int b; //blue
-} t_rgb;
-// Structure storing all raycasting-related variables for a single ray
+	int	r; //red
+	int	g; //green
+	int	b; //blue
+}	t_rgb;
+// Structure storing raycasting-related
 typedef struct s_ray
 {
 	double	camera_x;		// x-coordinate in camera space (-1 to 1)
