@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:14:10 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 11:14:11 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/27 12:05:41 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,19 @@ void	load_textures(t_game *game)
 	game->texture.so = mlx_load_png(game->texture.so_path);
 	game->texture.ea = mlx_load_png(game->texture.ea_path);
 	game->texture.we = mlx_load_png(game->texture.we_path);
-	if (!game->texture.no || !game->texture.so || !game->texture.ea
-		|| !game->texture.we)
+
+	if (!game->texture.no || !game->texture.so || !game->texture.ea || !game->texture.we)
+	{
+		if (game->texture.no)
+			mlx_delete_texture(game->texture.no);
+		if (game->texture.so)
+			mlx_delete_texture(game->texture.so);
+		if (game->texture.ea)
+			mlx_delete_texture(game->texture.ea);
+		if (game->texture.we)
+			mlx_delete_texture(game->texture.we);
+
 		error_function("Error: failed to load textures");
+	}
 }
+
