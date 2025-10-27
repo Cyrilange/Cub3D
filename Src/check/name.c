@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:10:12 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 14:56:32 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/27 15:01:14 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	check_wall(t_game *game)
 						- 1][x] == ' ' || game->map.map[y + 1][x] == ' '
 					|| game->map.map[y][x - 1] == ' ' || game->map.map[y][x
 						+ 1] == ' ')
-					error_function("Error: map not closed");
+					g_error_function(game, "Error: map not closed");
 			}
 			x++;
 		}
