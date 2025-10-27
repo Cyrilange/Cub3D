@@ -3,43 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csalamit <csalamit@student.42malaga.com>   #+#  +:+       +#+        */
+/*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-08-26 16:40:17 by csalamit          #+#    #+#             */
-/*   Updated: 2025-08-26 16:40:17 by csalamit         ###   ########.fr       */
+/*   Created: 2025/08/26 16:40:17 by csalamit          #+#    #+#             */
+/*   Updated: 2025/10/27 14:46:30 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "cub3D.h"
 
-void	find_player(t_game *g, double *s_x, double *s_y, char *start_dir)
+void find_player(t_game *g, double *s_x, double *s_y, char *start_dir)
 {
-	int		y;
-	int		x;
+	int		i[2];
 	int		found;
 	char	c;
-
+	
 	found = 0;
-	y = -1;
-	while (++y < g->map.map_height)
+	i[0] = -1;
+	while (++i[0] < g->map.map_height)
 	{
-		x = -1;
-		while (++x < g->map.map_width)
+		i[1] = -1;
+		while (++i[1] < g->map.map_width)
 		{
-			c = g->map.map[y][x];
+			c = g->map.map[i[0]][i[1]];
 			if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 			{
 				if (found++)
 					error_function("Error: multiple player starts in map");
-				*s_x = x + 0.5;
-				*s_y = y + 0.5;
+				*s_x = i[1] + 0.5;
+				*s_y = i[0] + 0.5;
 				*start_dir = c;
-				g->map.map[y][x] = '0';
+				g->map.map[i[0]][i[1]] = '0';
 			}
 		}
 	}
-	if (found == 0)
-		error_function("Error: no player start found in map");
-	}
+	if (!found)
+		error_function("Error: no player found in map");
+}
+
 
 int	main(int ac, char **av)
 {
