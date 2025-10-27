@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:14:21 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 12:56:18 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/27 15:09:51 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ static mlx_texture_t	*get_texture_ptr(t_texture *tex, int id)
 
 static int	get_texture_id(t_ray *r)
 {
-	if (r->side == 0 && r->rayDirX < 0)
+	if (r->side == 0 && r->ray_dir_x < 0)
 		return (0);
-	if (r->side == 0 && r->rayDirX >= 0)
+	if (r->side == 0 && r->ray_dir_x >= 0)
 		return (1);
-	if (r->side == 1 && r->rayDirY < 0)
+	if (r->side == 1 && r->ray_dir_y < 0)
 		return (2);
 	return (3);
 }
@@ -55,15 +55,15 @@ static void	draw_tex_line(t_game *g, int x, t_ray *r, mlx_texture_t *t)
 	uint32_t		color;
 	int				y;
 
-	r->tx = (int)(r->wallX * t->width);
-	if ((r->side == 0 && r->rayDirX > 0) || (r->side == 1 && r->rayDirY < 0))
+	r->tx = (int)(r->wall_x * t->width);
+	if ((r->side == 0 && r->ray_dir_x > 0) || (r->side == 1 && r->ray_dir_y < 0))
 		r->tx = t->width - r->tx - 1;
 	pixels = t->pixels;
-	y = r->drawStart;
-	while (y < r->drawEnd)
+	y = r->draw_start;
+	while (y < r->draw_end)
 	{
-		r->d = y * 256 - WIN_HEIGHT * 128 + r->lineHeight * 128;
-		r->ty = ((r->d * t->height) / r->lineHeight) / 256;
+		r->d = y * 256 - WIN_HEIGHT * 128 + r->line_height * 128;
+		r->ty = ((r->d * t->height) / r->line_height) / 256;
 		r->idx = (r->ty * t->width + r->tx) * 4;
 		color = (pixels[r->idx] << 24) | (pixels[r->idx
 				+ 1] << 16) | (pixels[r->idx + 2] << 8) | pixels[r->idx + 3];
@@ -77,10 +77,10 @@ void	draw_ray_column(t_game *g, int x, t_ray *r)
 	int				id;
 
 	if (r->side == 0)
-		r->wallX = g->player.pos_y + r->perpWallDist * r->rayDirY;
+		r->wall_x = g->player.pos_y + r->perp_wall_dist * r->ray_dir_y;
 	else
-		r->wallX = g->player.pos_x + r->perpWallDist * r->rayDirX;
-	r->wallX -= floor(r->wallX);
+		r->wall_x = g->player.pos_x + r->perp_wall_dist * r->ray_dir_x;
+	r->wall_x -= floor(r->wall_x);
 	id = get_texture_id(r);
 	t = get_texture_ptr(&g->texture, id);
 	if (!t)

@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:14:25 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 11:14:26 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/27 15:11:52 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,25 @@ static void	perform_dda(t_game *game, t_ray *ray)
 {
 	while (!ray->hit)
 	{
-		if (ray->mapX < 0 || ray->mapX >= game->map.map_width || ray->mapY < 0
-			|| ray->mapY >= game->map.map_height)
+		if (ray->map_x < 0 || ray->map_x >= game->map.map_width
+			|| ray->map_y < 0 || ray->map_y >= game->map.map_height)
 		{
 			ray->hit = 1;
 			break ;
 		}
-		if (ray->sideDistX < ray->sideDistY)
+		if (ray->side_dist_x < ray->side_dist_y)
 		{
-			ray->sideDistX += ray->deltaDistX;
-			ray->mapX += ray->stepX;
+			ray->side_dist_x += ray->delta_dist_x;
+			ray->map_x += ray->step_x;
 			ray->side = 0;
 		}
 		else
 		{
-			ray->sideDistY += ray->deltaDistY;
-			ray->mapY += ray->stepY;
+			ray->side_dist_y += ray->delta_dist_y;
+			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (game->map.map[ray->mapY][ray->mapX] == '1')
+		if (game->map.map[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
 	}
 }
@@ -42,18 +42,18 @@ static void	perform_dda(t_game *game, t_ray *ray)
 static void	calc_wall_distance_and_height(t_player *p, t_ray *ray)
 {
 	if (ray->side == 0)
-		ray->perpWallDist = (ray->mapX - p->pos_x + (1 - ray->stepX) / 2)
-			/ ray->rayDirX;
+		ray->perp_wall_dist = (ray->map_x - p->pos_x + (1 - ray->step_x) / 2)
+			/ ray->ray_dir_x;
 	else
-		ray->perpWallDist = (ray->mapY - p->pos_y + (1 - ray->stepY) / 2)
-			/ ray->rayDirY;
-	ray->lineHeight = (int)(WIN_HEIGHT / ray->perpWallDist);
-	ray->drawStart = -ray->lineHeight / 2 + WIN_HEIGHT / 2;
-	if (ray->drawStart < 0)
-		ray->drawStart = 0;
-	ray->drawEnd = ray->lineHeight / 2 + WIN_HEIGHT / 2;
-	if (ray->drawEnd >= WIN_HEIGHT)
-		ray->drawEnd = WIN_HEIGHT - 1;
+		ray->perp_wall_dist = (ray->map_y - p->pos_y + (1 - ray->step_y) / 2)
+			/ ray->ray_dir_y;
+	ray->line_height = (int)(WIN_HEIGHT / ray->perp_wall_dist);
+	ray->draw_start = -ray->line_height / 2 + WIN_HEIGHT / 2;
+	if (ray->draw_start < 0)
+		ray->draw_start = 0;
+	ray->draw_end = ray->line_height / 2 + WIN_HEIGHT / 2;
+	if (ray->draw_end >= WIN_HEIGHT)
+		ray->draw_end = WIN_HEIGHT - 1;
 }
 
 static void	draw_background(t_game *game)
