@@ -6,10 +6,9 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:14:10 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 12:19:53 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/27 13:01:01 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "cub3D.h"
 
@@ -32,9 +31,7 @@ static unsigned int	create_color(int r, int g, int b)
 
 unsigned int	parse_color(char *s)
 {
-	int		r;
-	int		g;
-	int		b;
+	t_rgb	color;
 	char	**split;
 	char	*trim;
 	int		i;
@@ -44,14 +41,12 @@ unsigned int	parse_color(char *s)
 	free(trim);
 	if (!split || !split[0] || !split[1] || !split[2])
 		error_function("Error: invalid color format");
-	r = ft_atoi(split[0]);
-	g = ft_atoi(split[1]);
-	b = ft_atoi(split[2]);
+	color.r = ft_atoi(split[0]);
+	color.g = ft_atoi(split[1]);
+	color.b = ft_atoi(split[2]);
 	i = -1;
 	while (split[++i])
 		free(split[i]);
 	free(split);
-	return (create_color(r, g, b));
+	return (create_color(color.r, color.g, color.b));
 }
-
-
