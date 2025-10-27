@@ -1,7 +1,7 @@
-NO ./Include/assets/walls/street.png
-SO ./Include/assets/walls/obito2.png
-WE ./Include/assets/walls/street2.png
-EA ./Include/assets/walls/obito4.png
+NO ./Include/assets/walls/Texturelabs_Brick_123S.png
+SO ./Include/assets/walls/Texturelabs_Fabric_121S.png
+WE ./Include/assets/walls/Texturelabs_Grunge_190S.png
+EA ./Include/assets/walls/Texturelabs_Paper_278S.png
 
 
 F 50,50,50
