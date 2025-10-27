@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   struct.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/27 11:10:01 by csalamit          #+#    #+#             */
+/*   Updated: 2025/10/27 11:10:05 by csalamit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
@@ -97,6 +108,5 @@ typedef struct s_game
 	t_map			map;			// Map data
 	t_img			img;			// Main rendering image buffer
 }					t_game;
-
 
 #endif
