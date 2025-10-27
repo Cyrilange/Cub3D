@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:14:21 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 15:09:51 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/27 15:16:18 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ static void	draw_tex_line(t_game *g, int x, t_ray *r, mlx_texture_t *t)
 	int				y;
 
 	r->tx = (int)(r->wall_x * t->width);
-	if ((r->side == 0 && r->ray_dir_x > 0) || (r->side == 1 && r->ray_dir_y < 0))
+	if ((r->side == 0 && r->ray_dir_x > 0)
+		|| (r->side == 1 && r->ray_dir_y < 0))
 		r->tx = t->width - r->tx - 1;
 	pixels = t->pixels;
 	y = r->draw_start;
