@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:04:28 by csalamithom       #+#    #+#             */
-/*   Updated: 2025/10/27 11:10:24 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/28 15:30:38 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,4 @@ void	game_loop(void *param)
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(game->mlx);
 	raycasting(game);
-	mlx_image_to_window(game->mlx, game->img.img, 0, 0);
 }

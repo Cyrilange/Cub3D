@@ -6,13 +6,13 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:14:25 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 16:21:51 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/28 13:46:47 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	perform_dda(t_game *game, t_ray *ray)
+static inline void	perform_dda(t_game *game, t_ray *ray)
 {
 	while (!ray->hit)
 	{
@@ -39,7 +39,7 @@ static void	perform_dda(t_game *game, t_ray *ray)
 	}
 }
 
-static void	calc_wall_distance_and_height(t_player *p, t_ray *ray)
+static inline void	calc_wall_distance_and_height(t_player *p, t_ray *ray)
 {
 	if (ray->side == 0)
 		ray->perp_wall_dist = (ray->map_x - p->pos_x + (1 - ray->step_x) / 2)
@@ -56,7 +56,7 @@ static void	calc_wall_distance_and_height(t_player *p, t_ray *ray)
 		ray->draw_end = WIN_HEIGHT - 1;
 }
 
-static void	draw_background(t_game *game)
+static inline void	draw_background(t_game *game)
 {
 	int	x;
 	int	y;

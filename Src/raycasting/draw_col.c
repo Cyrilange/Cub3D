@@ -6,13 +6,13 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:14:21 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 15:16:18 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/28 13:45:53 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static mlx_texture_t	*get_texture_ptr(t_texture *tex, int id)
+static inline mlx_texture_t	*get_texture_ptr(t_texture *tex, int id)
 {
 	if (id == 0)
 		return (tex->no);
@@ -23,7 +23,7 @@ static mlx_texture_t	*get_texture_ptr(t_texture *tex, int id)
 	return (tex->we);
 }
 
-static int	get_texture_id(t_ray *r)
+static inline int	get_texture_id(t_ray *r)
 {
 	if (r->side == 0 && r->ray_dir_x < 0)
 		return (0);
@@ -49,7 +49,7 @@ void	ft_put_pixel(t_game *g, int x, int y, uint32_t c)
 	p[i + 3] = c & 0xFF;
 }
 
-static void	draw_tex_line(t_game *g, int x, t_ray *r, mlx_texture_t *t)
+static inline void	draw_tex_line(t_game *g, int x, t_ray *r, mlx_texture_t *t)
 {
 	unsigned char	*pixels;
 	uint32_t		color;

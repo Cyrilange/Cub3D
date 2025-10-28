@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:14:30 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 14:58:59 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/28 15:42:50 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,12 @@ static void	helper_free_game(t_game *game)
 		mlx_delete_texture(game->texture.ea);
 	if (game->texture.we)
 		mlx_delete_texture(game->texture.we);
+	if (game->hud.hand_image)
+		mlx_delete_image(game->mlx, game->hud.hand_image);
+	if (game->hud.hand_texture)
+		mlx_delete_texture(game->hud.hand_texture);
+	if (game->img.img)
+		mlx_delete_image(game->mlx, game->img.img);
 }
 
 void	free_game(t_game *game)

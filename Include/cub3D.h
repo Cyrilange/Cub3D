@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:13:40 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 14:59:16 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/28 14:04:29 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,7 @@ void			game_loop(void *param);
 //check
 void			check_name(char *file);
 int				check_wall(t_game *game);
+//gun
+void			init_hud(t_game *game);
 
 #endif

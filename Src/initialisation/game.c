@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:10:35 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 14:53:41 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/28 14:53:10 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,4 @@ void	init_game_struct(t_game *game)
 	game->win = NULL;
 	init_textures(&game->texture);
 	init_map(&game->map);
-}
-
-void	init_game(t_game *game)
-{
-	init_images(game);
 }

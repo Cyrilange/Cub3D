@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:13:57 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 15:16:58 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/28 14:46:13 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,6 @@ void	load_textures(t_game *game)
 	{
 		free_game(game);
 		error_function("Error: failed to load textures");
-	}
-}
-
-void	init_images(t_game *game)
-{
-	game->img.img = NULL;
-	game->img.img_width = 0;
-	game->img.img_height = 0;
-	load_textures(game);
-	game->img.img = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
-	if (!game->img.img
-		|| mlx_image_to_window(game->mlx, game->img.img, 0, 0) < 0)
-	{
-		free_game(game);
-		error_function("Error: failed to create/attach main image");
 	}
 }
 
