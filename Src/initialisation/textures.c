@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:14:03 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/28 15:46:08 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/28 15:50:48 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	init_hud(t_game *game)
 	if (!game->hud.hand_image)
 		g_error_function(game, "Error: failed to create hand image");
 	game->hud.x = WIN_WIDTH / 2 - game->hud.hand_image->width / 2;
-	game->hud.y = 350;
+	game->hud.y = 390;
 	if (mlx_image_to_window
 		(game->mlx, game->hud.hand_image, game->hud.x, game->hud.y) < 0)
 		g_error_function(game, "Error: failed to display hand image");
