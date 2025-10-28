@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:10:42 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/28 15:33:28 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/28 20:53:39 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	init_player(t_player *player, double start_x, double start_y,
 	player->pos_x = start_x;
 	player->pos_y = start_y;
 	player->move_speed = 0.1;
-	player->rot_speed = 0.09;
+	player->rot_speed = 0.08;
 	if (start == 'N')
 		init_north(player);
 	else if (start == 'S')

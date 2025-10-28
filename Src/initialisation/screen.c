@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:13:57 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/28 14:46:13 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/28 20:54:42 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	load_textures(t_game *game)
 		|| !game->texture.ea || !game->texture.we)
 	{
 		free_game(game);
-		error_function("Error: failed to load textures");
+		g_error_function(game, "Error: failed to load textures");
 	}
 }
 
