@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:10:01 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/28 15:03:09 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:30:40 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ typedef struct s_hud
 {
 	mlx_texture_t	*hand_texture;
 	mlx_image_t		*hand_image;
-	int             x;
-    int             y;
+	int				x; //x and y to make sure the value was kept for main
+	int				y;
 }	t_hud;
-
 // Linked list node to temporarily store lines while parsing the map
 typedef struct s_line
 {
