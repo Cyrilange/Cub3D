@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:13:50 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/29 11:55:58 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/29 14:46:16 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@
 # define WIN_HEIGHT 680
 
 # define ERROR -1
+# define COLLISION_MARGIN 0.2
 
 #endif

@@ -6,11 +6,25 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:10:30 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 12:58:16 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/29 14:50:39 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+static int	is_wall(t_game *game, double x, double y)
+{
+	int	map_x;
+	int	map_y;
+
+	map_y = (int)y;
+	map_x = (int)x;
+	if (map_y < 0 || map_y >= game->map.map_height)
+		return (1);
+	if (map_x < 0 || map_x >= (int)ft_strlen(game->map.map[map_y]))
+		return (1);
+	return (game->map.map[map_y][map_x] != '0');
+}
 
 void	try_move(t_game *game, double dx, double dy)
 {
@@ -19,14 +33,16 @@ void	try_move(t_game *game, double dx, double dy)
 
 	new_x = game->player.pos_x + dx;
 	new_y = game->player.pos_y + dy;
-	if (new_x >= 0 && new_x < game->map.map_width
-		&& new_y >= 0 && new_y < game->map.map_height)
-	{
-		if (game->map.map[(int)new_y][(int)game->player.pos_x] == '0')
-			game->player.pos_y = new_y;
-		if (game->map.map[(int)game->player.pos_y][(int)new_x] == '0')
-			game->player.pos_x = new_x;
-	}
+	if (!is_wall(game, new_x + COLLISION_MARGIN, game->player.pos_y)
+		&& !is_wall(game, new_x - COLLISION_MARGIN, game->player.pos_y)
+		&& !is_wall(game, new_x, game->player.pos_y + COLLISION_MARGIN)
+		&& !is_wall(game, new_x, game->player.pos_y - COLLISION_MARGIN))
+		game->player.pos_x = new_x;
+	if (!is_wall(game, game->player.pos_x, new_y + COLLISION_MARGIN)
+		&& !is_wall(game, game->player.pos_x, new_y - COLLISION_MARGIN)
+		&& !is_wall(game, game->player.pos_x + COLLISION_MARGIN, new_y)
+		&& !is_wall(game, game->player.pos_x - COLLISION_MARGIN, new_y))
+		game->player.pos_y = new_y;
 }
 
 static void	rotate_player(t_player *player, double angle)
