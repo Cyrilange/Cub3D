@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 08:59:24 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 16:16:21 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/29 11:54:34 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,21 @@ char	*get_next_line(int fd)
 {
 	static char	*buffer[OPEN_MAX];
 	char		*line;
+	int			i;
 
+	i = -1;
+	if (fd == -1)
+	{
+		while (++i < OPEN_MAX)
+		{
+			if (buffer[i])
+			{
+				free(buffer[i]);
+				buffer[i] = NULL;
+			}
+		}
+		return (NULL);
+	}
 	if (fd < 0 || fd >= OPEN_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer[fd] = ft_fill_line(buffer[fd], fd);

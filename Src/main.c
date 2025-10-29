@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:40:17 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/28 20:59:58 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/29 11:59:47 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,15 @@ void	find_player(t_game *g, double *s_x, double *s_y, char *start_dir)
 		g_error_function(g, "Error: no player found in map");
 }
 
+static void	close_game(void *param)
+{
+	t_game	*game;
+
+	game = (t_game *)param;
+	free_game(game);
+	exit(0);
+}
+
 int	main(int ac, char **av)
 {
 	t_game	g;
@@ -62,6 +71,6 @@ int	main(int ac, char **av)
 	mlx_set_instance_depth(&g.img.img->instances[0], 0);
 	mlx_set_instance_depth(&g.hud.hand_image->instances[0], 1);
 	mlx_loop_hook(g.mlx, game_loop, &g);
+	mlx_close_hook(g.mlx, close_game, &g);
 	mlx_loop(g.mlx);
-	free_game(&g);
 }

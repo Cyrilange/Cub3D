@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:14:16 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 11:14:17 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/29 11:44:44 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,31 +40,45 @@ static void	add_line(t_line **head, char *line)
 	}
 }
 
-static void	assign_texture_path(char **dest, const char *line, int offset)
+static void	assign_texture_path(t_game *game,
+	char **dest, const char *line, int offset)
 {
 	char	*path;
+	char	*trimmed;
 
-	path = ft_strtrim(line + offset, " \t\n");
-	*dest = ft_strdup(path);
-	free(path);
+	if (*dest != NULL)
+		handle_line_error(game, "Error: duplicate texture path");
+	trimmed = ft_strtrim(line + offset, " \t\n\r");
+	if (!trimmed || !*trimmed)
+	{
+		free(trimmed);
+		g_error_function(game, "Error: invalid or empty texture path");
+	}
+	path = ft_strdup(trimmed);
+	free(trimmed);
+	if (!path)
+		g_error_function(game,
+			"Error: malloc failed when copying texture path");
+	*dest = path;
 }
 
-static void	handle_line(t_game *game, char *line, t_line **lines)
+int	handle_line(t_game *game, char *line, t_line **lines)
 {
 	if (ft_strncmp(line, "NO ", 3) == 0)
-		assign_texture_path(&game->texture.no_path, line, 3);
+		assign_texture_path(game, &game->texture.no_path, line, 3);
 	else if (ft_strncmp(line, "SO ", 3) == 0)
-		assign_texture_path(&game->texture.so_path, line, 3);
+		assign_texture_path(game, &game->texture.so_path, line, 3);
 	else if (ft_strncmp(line, "EA ", 3) == 0)
-		assign_texture_path(&game->texture.ea_path, line, 3);
+		assign_texture_path(game, &game->texture.ea_path, line, 3);
 	else if (ft_strncmp(line, "WE ", 3) == 0)
-		assign_texture_path(&game->texture.we_path, line, 3);
+		assign_texture_path(game, &game->texture.we_path, line, 3);
 	else if (line[0] == 'F')
 		game->texture.floor = parse_color(line + 2);
 	else if (line[0] == 'C')
 		game->texture.ceilling = parse_color(line + 2);
 	else if (ft_strchr("01NSEW", line[0]))
 		add_line(lines, line);
+	return (0);
 }
 
 static void	convert_list_to_map(t_map *map, t_line *list)
@@ -107,7 +121,7 @@ void	parse_map_file(const char *filename, t_game *game)
 	line = get_next_line(fd);
 	while (line)
 	{
-		handle_line(game, line, &lines);
+		handle_line_or_exit(game, line, &lines);
 		free(line);
 		line = get_next_line(fd);
 	}

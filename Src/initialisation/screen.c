@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:13:57 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/28 20:54:42 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/29 11:42:18 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void	init_window(t_game *game)
 
 void	load_textures(t_game *game)
 {
+	if (!game->texture.no_path || !game->texture.so_path
+		|| !game->texture.we_path || !game->texture.ea_path)
+		g_error_function(game, "Error: missing texture path(s)");
 	game->texture.no = mlx_load_png(game->texture.no_path);
 	game->texture.so = mlx_load_png(game->texture.so_path);
 	game->texture.ea = mlx_load_png(game->texture.ea_path);
@@ -31,7 +34,6 @@ void	load_textures(t_game *game)
 	if (!game->texture.no || !game->texture.so
 		|| !game->texture.ea || !game->texture.we)
 	{
-		free_game(game);
 		g_error_function(game, "Error: failed to load textures");
 	}
 }

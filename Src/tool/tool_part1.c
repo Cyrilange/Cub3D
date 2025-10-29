@@ -6,34 +6,25 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:14:30 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/28 20:56:26 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/29 11:45:49 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+#include "./get_next_line/get_next_line_bonus.h"
 
-void	error_function(const char *message)
+static void	free_list(t_line *list)
 {
-	printf(RED "%s \n" RESET, message);
-	exit(EXIT_FAILURE);
-}
+	t_line	*tmp;
 
-void	g_error_function(t_game *game, const char *message)
-{
-	if (game)
-		free_game(game);
-	printf(RED "%s \n" RESET, message);
-	exit(EXIT_FAILURE);
-}
-
-void	*check_malloc(size_t size)
-{
-	void	*ptr;
-
-	ptr = malloc(size);
-	if (!ptr)
-		error_function("Error: Memory allocation failed.");
-	return (ptr);
+	while (list)
+	{
+		tmp = list->next;
+		if (list->content)
+			free(list->content);
+		free(list);
+		list = tmp;
+	}
 }
 
 static void	helper_free_game(t_game *game)
@@ -78,4 +69,24 @@ void	free_game(t_game *game)
 		game->map.map = NULL;
 	}
 	helper_free_game(game);
+	free_gnl_static();
+}
+
+static void	error_exit(t_game *game, t_line *lines, char *line, const char *msg)
+{
+	if (line)
+		free(line);
+	if (lines)
+		free_list(lines);
+	helper_free_game(game);
+	free_gnl_static();
+	g_error_function(game, msg);
+}
+
+void	handle_line_or_exit(t_game *game, char *line, t_line **lines)
+{
+	if (handle_line(game, line, lines) == ERROR)
+	{
+		error_exit(game, *lines, line, "Error: duplicate texture path");
+	}
 }

@@ -18,6 +18,7 @@ SRC_FILES       = main.c \
 				  initialisation/game.c \
 				  initialisation/textures.c \
 				  tool/tool_part1.c \
+				  tool/tool_part_2.c \
 				  parsing/color.c \
 				  parsing/line.c \
 				  raycasting/draw_col.c \
