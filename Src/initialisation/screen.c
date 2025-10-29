@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:13:57 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/29 11:42:18 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/29 20:43:20 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_window(t_game *game)
 	game->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "cub3D", true);
 	if (!game->mlx)
 	{
-		error_function("Error: Failed to initialize window\n");
+		error_function("Error\n Failed to initialize window\n");
 	}
 }
 
@@ -26,7 +26,7 @@ void	load_textures(t_game *game)
 {
 	if (!game->texture.no_path || !game->texture.so_path
 		|| !game->texture.we_path || !game->texture.ea_path)
-		g_error_function(game, "Error: missing texture path(s)");
+		g_error_function(game, "Error\n missing texture path(s)");
 	game->texture.no = mlx_load_png(game->texture.no_path);
 	game->texture.so = mlx_load_png(game->texture.so_path);
 	game->texture.ea = mlx_load_png(game->texture.ea_path);
@@ -34,7 +34,7 @@ void	load_textures(t_game *game)
 	if (!game->texture.no || !game->texture.so
 		|| !game->texture.ea || !game->texture.we)
 	{
-		g_error_function(game, "Error: failed to load textures");
+		g_error_function(game, "Error\n failed to load textures");
 	}
 }
 

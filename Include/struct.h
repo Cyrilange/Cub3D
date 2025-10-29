@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:10:01 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/29 14:21:17 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/29 21:44:10 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ typedef struct s_game
 	t_map			map;			// Map data
 	t_img			img;			// Main rendering image buffer
 	t_hud			hud;			// HUD elements
+	bool			show_minimap;	// Minimap toggle
+	bool			m_key_pressed;	// M key state for minimap toggle
 }					t_game;
 //struct for the norm for checking the wall if they are close or not
 typedef struct s_wall_ctx

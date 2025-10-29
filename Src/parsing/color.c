@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:14:10 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/27 13:01:01 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/29 20:43:32 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ unsigned int	parse_color(char *s)
 	split = ft_split(trim, ',');
 	free(trim);
 	if (!split || !split[0] || !split[1] || !split[2])
-		error_function("Error: invalid color format");
+		error_function("Error\n invalid color format");
 	color.r = ft_atoi(split[0]);
 	color.g = ft_atoi(split[1]);
 	color.b = ft_atoi(split[2]);

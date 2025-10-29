@@ -25,7 +25,9 @@ SRC_FILES       = main.c \
 				  raycasting/raycast.c \
 				  controls/mouvement.c \
 				  controls/monitor.c \
+				  controls/move.c \
 				  check/name.c \
+				  mini_map.c//minimap.c \
 
 
 
@@ -62,7 +64,9 @@ $(NAME): $(OBJS) $(LIBFT)/libft.a $(GNL)/libgnl.a $(MLX42_LIB)
 	@echo " ██       ██    ██   ██  ████        ██    ██   ██ "
 	@echo " ██████    ██████    ████████    ██████    ██████  "
 	@echo "$(RESET)"
-	@echo "\033[1;34m usage: ./cub3D includes/maps/map.yourchoice \033[0m"
+	@echo "\033[1;34m usage: ./cub3D ./Includes/maps/map.yourchoice \033[0m"
+	@echo "\033[1;34m IF YOU WANT THE MINIMAP  \033[0m"
+	@echo "\033[1;34m CLICK THE KEY M \033[0m"
 	@echo ""
 
 # Build Libft

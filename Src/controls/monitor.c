@@ -6,46 +6,26 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:04:28 by csalamithom       #+#    #+#             */
-/*   Updated: 2025/10/29 10:52:13 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/29 21:42:44 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	move_forward(t_game *game)
+static void	handle_minimap_toggle(t_game *game)
 {
-	try_move(game, game->player.dir_x * game->player.move_speed,
-		game->player.dir_y * game->player.move_speed);
-}
-
-void	move_backward(t_game *game)
-{
-	try_move(game, -game->player.dir_x * game->player.move_speed,
-		-game->player.dir_y * game->player.move_speed);
-}
-
-void	move_left(t_game *game)
-{
-	if (game->player.dir_x == 0)
-		try_move(game,
-			game->player.dir_y * game->player.move_speed,
-			-game->player.dir_x * game->player.move_speed);
+	if (mlx_is_key_down(game->mlx, MLX_KEY_M))
+	{
+		if (!game->m_key_pressed)
+		{
+			game->show_minimap = !game->show_minimap;
+			game->m_key_pressed = true;
+		}
+	}
 	else
-		try_move(game,
-			game->player.dir_y * game->player.move_speed,
-			-game->player.dir_x * game->player.move_speed);
-}
-
-void	move_right(t_game *game)
-{
-	if (game->player.dir_x == 0)
-		try_move(game,
-			-game->player.dir_y * game->player.move_speed,
-			game->player.dir_x * game->player.move_speed);
-	else
-		try_move(game,
-			-game->player.dir_y * game->player.move_speed,
-			game->player.dir_x * game->player.move_speed);
+		game->m_key_pressed = false;
+	if (game->show_minimap)
+		draw_minimap(game);
 }
 
 void	game_loop(void *param)
@@ -68,4 +48,5 @@ void	game_loop(void *param)
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(game->mlx);
 	raycasting(game);
+	handle_minimap_toggle(game);
 }

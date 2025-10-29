@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:13:50 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/29 14:46:16 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/29 20:30:19 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,13 @@
 
 # define ERROR -1
 # define COLLISION_MARGIN 0.2
+
+# define MINIMAP_SCALE 6
+# define MINIMAP_OFFSET_X 910
+# define MINIMAP_OFFSET_Y 5
+# define MINIMAP_MARGIN 10 
+# define RED_PLAYER 0xFF0000FF
+# define WHITE 0xFFFFFFFF
+# define BLACK 0xFF000000
 
 #endif

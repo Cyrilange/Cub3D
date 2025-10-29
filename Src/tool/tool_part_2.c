@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:16:34 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/29 11:54:04 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/29 20:44:08 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	*check_malloc(size_t size)
 
 	ptr = malloc(size);
 	if (!ptr)
-		error_function("Error: Memory allocation failed.");
+		error_function("Error\n Memory allocation failed.");
 	return (ptr);
 }
 

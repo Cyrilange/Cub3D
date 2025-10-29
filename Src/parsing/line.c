@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:14:16 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/29 11:44:44 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/29 20:43:53 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,18 @@ static void	assign_texture_path(t_game *game,
 	char	*trimmed;
 
 	if (*dest != NULL)
-		handle_line_error(game, "Error: duplicate texture path");
+		handle_line_error(game, "Error\n duplicate texture path");
 	trimmed = ft_strtrim(line + offset, " \t\n\r");
 	if (!trimmed || !*trimmed)
 	{
 		free(trimmed);
-		g_error_function(game, "Error: invalid or empty texture path");
+		g_error_function(game, "Error\n invalid or empty texture path");
 	}
 	path = ft_strdup(trimmed);
 	free(trimmed);
 	if (!path)
 		g_error_function(game,
-			"Error: malloc failed when copying texture path");
+			"Error\n malloc failed when copying texture path");
 	*dest = path;
 }
 
@@ -116,7 +116,7 @@ void	parse_map_file(const char *filename, t_game *game)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		error_function("Error: cannot open map file");
+		error_function("Error\n cannot open map file");
 	lines = NULL;
 	line = get_next_line(fd);
 	while (line)

@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:10:35 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/28 21:09:55 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/29 21:43:28 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,6 @@ void	init_game_struct(t_game *game)
 	game->player.pos_x = 0;
 	game->player.pos_y = 0;
 	game->player.start_dir = 0;
+	game->show_minimap = false;
+	game->m_key_pressed = false;
 }

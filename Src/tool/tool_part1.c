@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:14:30 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/29 11:45:49 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/29 20:42:34 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,6 @@ void	handle_line_or_exit(t_game *game, char *line, t_line **lines)
 {
 	if (handle_line(game, line, lines) == ERROR)
 	{
-		error_exit(game, *lines, line, "Error: duplicate texture path");
+		error_exit(game, *lines, line, "Error\n duplicate texture path");
 	}
 }

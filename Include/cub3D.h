@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:13:40 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/29 10:55:29 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/29 17:08:55 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,8 @@ void			init_hud(t_game *game);
 //modif of GNL
 void			free_gnl_static(void);
 void			handle_line_error(t_game *game, const char *message);
+//minimap
+void	draw_square(t_game *g, int x, int y, int color);
+void	draw_minimap(t_game *g);
 
 #endif
