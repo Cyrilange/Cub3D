@@ -64,7 +64,7 @@ $(NAME): $(OBJS) $(LIBFT)/libft.a $(GNL)/libgnl.a $(MLX42_LIB)
 	@echo " ██       ██    ██   ██  ████        ██    ██   ██ "
 	@echo " ██████    ██████    ████████    ██████    ██████  "
 	@echo "$(RESET)"
-	@echo "\033[1;34m usage: ./cub3D ./Includes/maps/map.yourchoice \033[0m"
+	@echo "\033[1;34m usage: ./cub3D [maps][maps_not_valid]/yourchoice \033[0m"
 	@echo "\033[1;34m IF YOU WANT THE MINIMAP  \033[0m"
 	@echo "\033[1;34m CLICK THE KEY M \033[0m"
 	@echo ""
