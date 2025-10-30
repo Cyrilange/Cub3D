@@ -4,8 +4,8 @@ WE ./Include/assets/walls/color.png
 EA ./Include/assets/walls/paint.png
 
 
-F 50,50,50
-C 150,150,200
+C 0,0,0
+F 30,30,55
 
 
 111111111111111111111111111111111111111111111111111111111111

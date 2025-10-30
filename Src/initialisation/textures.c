@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:14:03 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/29 20:46:38 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/30 16:40:27 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init_textures(t_texture *tex)
 
 void	init_hud(t_game *game)
 {
-	game->hud.hand_texture = mlx_load_png("./Include/assets/weapons/gun.png");
+	game->hud.hand_texture = mlx_load_png("./Include/assets/weapons/big.png");
 	if (!game->hud.hand_texture)
 		g_error_function(game, "Error\n failed to load hand texture");
 	game->hud.hand_image = mlx_texture_to_image
