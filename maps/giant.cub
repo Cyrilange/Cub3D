@@ -1,7 +1,7 @@
-NO ./Include/assets/walls/Texturelabs_Brick_123S.png
-SO ./Include/assets/walls/Texturelabs_Fabric_121S.png
-WE ./Include/assets/walls/Texturelabs_Grunge_190S.png
-EA ./Include/assets/walls/Texturelabs_Paper_278S.png
+NO ./Include/assets/walls/space.png
+SO ./Include/assets/walls/pink.png
+WE ./Include/assets/walls/color.png
+EA ./Include/assets/walls/paint.png
 
 
 F 50,50,50
