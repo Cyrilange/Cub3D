@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:13:40 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/29 17:08:55 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/30 12:12:02 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void			*check_malloc(size_t size);
 void			error_function(const char *message);
 void			g_error_function(t_game *game, const char *message);
 void			free_game(t_game *game);
-void	handle_line_or_exit(t_game *game, char *line, t_line **lines);
+void			handle_line_or_exit(t_game *game, char *line, t_line **lines);
 //parsing
 void			parse_map_file(const char *filename, t_game *game);
 unsigned int	parse_color(char *s);
@@ -48,9 +48,6 @@ int				handle_line(t_game *game, char *line, t_line **lines);
 //3d
 void			draw_ray_column(t_game *game, int x, t_ray *ray);
 void			raycasting(t_game *game);
-//void			calc_ray_direction(t_player *player, int x, double *rayDirX,
-//					double *rayDirY);
-//uint32_t		get_texture_pixel(t_texture *tex, int tex_id, int x, int y);
 void			ft_put_pixel(t_game *game, int x, int y, uint32_t color);
 //control
 void			try_move(t_game *game, double dx, double dy);
@@ -58,7 +55,6 @@ void			move_forward(t_game *game);
 void			move_backward(t_game *game);
 void			rotate_left(t_player *player);
 void			rotate_right(t_player *player);
-//void			handle_keypress(mlx_key_data_t keydata, void *param);
 void			move_left(t_game *game);
 void			move_right(t_game *game);
 void			game_loop(void *param);
@@ -71,7 +67,7 @@ void			init_hud(t_game *game);
 void			free_gnl_static(void);
 void			handle_line_error(t_game *game, const char *message);
 //minimap
-void	draw_square(t_game *g, int x, int y, int color);
-void	draw_minimap(t_game *g);
+void			draw_square(t_game *g, int x, int y, int color);
+void			draw_minimap(t_game *g);
 
 #endif
