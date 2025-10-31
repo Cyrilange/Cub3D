@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:04:28 by csalamithom       #+#    #+#             */
-/*   Updated: 2025/10/29 21:42:44 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/31 10:18:24 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	game_loop(void *param)
 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
 		rotate_right(&game->player);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(game->mlx);
+		close_game(game);
 	raycasting(game);
 	handle_minimap_toggle(game);
 }

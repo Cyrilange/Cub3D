@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:40:17 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/29 17:11:27 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/31 10:19:49 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,14 @@ void	find_player(t_game *g, double *s_x, double *s_y, char *start_dir)
 		g_error_function(g, "Error: no player found in map");
 }
 
-static void	close_game(void *param)
+void	close_game(void *param)
 {
 	t_game	*game;
 
 	game = (t_game *)param;
 	free_game(game);
+	if (game->mlx && game->mlx->window)
+		mlx_close_window(game->mlx);
 	exit(0);
 }
 
@@ -87,4 +89,5 @@ int	main(int ac, char **av)
 	mlx_loop_hook(g.mlx, game_loop, &g);
 	mlx_close_hook(g.mlx, close_game, &g);
 	mlx_loop(g.mlx);
+	mlx_terminate(g.mlx); 
 }

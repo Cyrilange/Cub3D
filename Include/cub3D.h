@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:13:40 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/30 12:12:02 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/30 20:41:55 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ void			handle_line_error(t_game *game, const char *message);
 //minimap
 void			draw_square(t_game *g, int x, int y, int color);
 void			draw_minimap(t_game *g);
+void	close_game(void *param);
 
 #endif
