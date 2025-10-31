@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:10:42 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/28 20:53:39 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/31 18:05:13 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	init_north(t_player *player)
 {
 	player->dir_x = 0;
 	player->dir_y = -1;
-	player->plan_x = 0.66;
+	player->plan_x = FOV;
 	player->plan_y = 0;
 }
 
@@ -24,7 +24,7 @@ static void	init_south(t_player *player)
 {
 	player->dir_x = 0;
 	player->dir_y = 1;
-	player->plan_x = -0.66;
+	player->plan_x = -FOV;
 	player->plan_y = 0;
 }
 
@@ -33,7 +33,7 @@ static void	init_east(t_player *player)
 	player->dir_x = 1;
 	player->dir_y = 0;
 	player->plan_x = 0;
-	player->plan_y = 0.66;
+	player->plan_y = FOV;
 }
 
 static void	init_west(t_player *player)
@@ -41,7 +41,7 @@ static void	init_west(t_player *player)
 	player->dir_x = -1;
 	player->dir_y = 0;
 	player->plan_x = 0;
-	player->plan_y = -0.66;
+	player->plan_y = -FOV;
 }
 
 void	init_player(t_player *player, double start_x, double start_y,

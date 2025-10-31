@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:13:50 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/29 20:30:19 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/31 18:05:07 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 
 # define ERROR -1
 # define COLLISION_MARGIN 0.2
+
+#define FOV 1.3
 
 # define MINIMAP_SCALE 6
 # define MINIMAP_OFFSET_X 910

@@ -1,0 +1,27 @@
+{
+   ignore_mlx_init
+   Memcheck:Leak
+   match-leak-kinds: definite,possible
+   fun:mlx_init
+}
+
+{
+   ignore_glfwInit
+   Memcheck:Leak
+   match-leak-kinds: definite,possible
+   fun:glfwInit
+}
+
+{
+   ignore_glfwCreateWindow
+   Memcheck:Leak
+   match-leak-kinds: definite,possible
+   fun:glfwCreateWindow
+}
+
+{
+   ignore_mlx_new_image
+   Memcheck:Leak
+   match-leak-kinds: definite,possible
+   fun:mlx_new_image
+}

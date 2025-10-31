@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:40:17 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/31 10:19:49 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/10/31 17:45:10 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,4 @@ int	main(int ac, char **av)
 	mlx_loop_hook(g.mlx, game_loop, &g);
 	mlx_close_hook(g.mlx, close_game, &g);
 	mlx_loop(g.mlx);
-	mlx_terminate(g.mlx); 
 }
