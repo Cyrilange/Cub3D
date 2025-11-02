@@ -1,7 +1,7 @@
-NAME            = cub3D
 
+NAME            = cub3D
 CC              = cc
-CFLAGS          = -Wall -Wextra -Werror -g -O2 -O3
+CFLAGS          = -Wall -Wextra -Werror -g
 MLX42_LIB       = ./Include/MLX42/build/libmlx42.a
 MLX42_INCLUDE   = ./Include/MLX42/include
 LIBFT           = ./Include/libft
@@ -65,8 +65,9 @@ $(NAME): $(OBJS) $(LIBFT)/libft.a $(GNL)/libgnl.a $(MLX42_LIB)
 	@echo " ██████    ██████    ████████    ██████    ██████  "
 	@echo "$(RESET)"
 	@echo "\033[1;34m usage: ./cub3D [maps][maps_not_valid]/yourchoice \033[0m"
-	@echo "\033[1;34m IF YOU WANT THE MINIMAP  \033[0m"
-	@echo "\033[1;34m CLICK THE KEY M \033[0m"
+	@echo "\033[1;34m THE MINIMAP : M  \033[0m"
+	@echo "\033[1;34m MOVING : WADS \033[0m"
+	@echo "\033[1;34m ROTATION : <- -> \033[0m"
 	@echo ""
 
 # Build Libft
