@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:40:17 by csalamit          #+#    #+#             */
-/*   Updated: 2025/11/02 11:30:07 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/11/06 20:09:16 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,12 @@ void	close_game(void *param)
 
 	game = (t_game *)param;
 	free_game(game);
-	if (game->mlx && game->mlx->window)
-		mlx_close_window(game->mlx);
+	if (game->mlx)
+	{
+		if (game->mlx->window)
+			mlx_close_window(game->mlx);
+		mlx_terminate(game->mlx);
+	}
 	exit(0);
 }
 
@@ -83,9 +87,6 @@ int	main(int ac, char **av)
 	g.img.img = mlx_new_image(g.mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (!g.img.img || mlx_image_to_window(g.mlx, g.img.img, 0, 0) < 0)
 		error_function("Error: image buffer failed");
-	init_hud(&g);
-	mlx_set_instance_depth(&g.img.img->instances[0], 0);
-	mlx_set_instance_depth(&g.hud.hand_image->instances[0], 1);
 	mlx_loop_hook(g.mlx, game_loop, &g);
 	mlx_close_hook(g.mlx, close_game, &g);
 	mlx_loop(g.mlx);

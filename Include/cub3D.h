@@ -6,7 +6,7 @@
 /*   By: csalamit <csalamit@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:13:40 by csalamit          #+#    #+#             */
-/*   Updated: 2025/10/30 20:41:55 by csalamit         ###   ########.fr       */
+/*   Updated: 2025/11/06 20:14:02 by csalamit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,9 @@ void			game_loop(void *param);
 //check
 void			check_name(char *file);
 int				check_wall(t_game *game);
-//gun
-void			init_hud(t_game *game);
 //modif of GNL
 void			free_gnl_static(void);
 void			handle_line_error(t_game *game, const char *message);
-//minimap
-void			draw_square(t_game *g, int x, int y, int color);
-void			draw_minimap(t_game *g);
-void	close_game(void *param);
+void			close_game(void *param);
 
 #endif

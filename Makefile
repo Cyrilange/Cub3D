@@ -27,9 +27,6 @@ SRC_FILES       = main.c \
 				  controls/monitor.c \
 				  controls/move.c \
 				  check/name.c \
-				  mini_map.c//minimap.c \
-
-
 
 OBJS            = $(SRC_FILES:%.c=$(OBJ_DIR)/%.o)
 
@@ -65,9 +62,6 @@ $(NAME): $(OBJS) $(LIBFT)/libft.a $(GNL)/libgnl.a $(MLX42_LIB)
 	@echo " ██████    ██████    ████████    ██████    ██████  "
 	@echo "$(RESET)"
 	@echo "\033[1;34m usage: ./cub3D [maps][maps_not_valid]/yourchoice \033[0m"
-	@echo "\033[1;34m THE MINIMAP : M  \033[0m"
-	@echo "\033[1;34m MOVING : WADS \033[0m"
-	@echo "\033[1;34m ROTATION : <- -> \033[0m"
 	@echo ""
 
 # Build Libft
