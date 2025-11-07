@@ -65,5 +65,5 @@ int				check_wall(t_game *game);
 void			free_gnl_static(void);
 void			handle_line_error(t_game *game, const char *message);
 void			close_game(void *param);
-
+//valgrind --suppressions=suppressions.supp ./cub3D maps/supergiant.cub
 #endif
