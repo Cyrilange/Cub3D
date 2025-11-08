@@ -27,7 +27,7 @@ static void	free_list(t_line *list)
 	}
 }
 
-static void	helper_free_game(t_game *game)
+void	helper_free_game(t_game *game)
 {
 	if (game->texture.no_path)
 		free(game->texture.no_path);

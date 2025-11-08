@@ -47,7 +47,10 @@ static void	assign_texture_path(t_game *game,
 	char	*trimmed;
 
 	if (*dest != NULL)
-		handle_line_error(game, "Error\n duplicate texture path");
+	{
+		free((void *)line);
+		g_error_function(game, "Error\n duplicate texture path");
+	}
 	trimmed = ft_strtrim(line + offset, " \t\n\r");
 	if (!trimmed || !*trimmed)
 	{
